@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://lukmanzaman.github.io/it/">
     <meta property="og:title" content="VIS Museum of Computing &amp; CS">
     <meta property="og:description" content="Penjelajahan visual interaktif 800+ konsep fundamental ilmu komputer: arsitektur sistem, jaringan, algoritma, OS, AI, database, dan sejarah teknologi komputasi.">
-    <meta property="og:image" content="https://lukmanzaman.github.io/it/jpg/E1-01-history-computing/colossus.jpg">
+    <meta property="og:image" content="https://lukmanzaman.github.io/it/thumb.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="id_ID">
@@ -26,7 +26,7 @@
     <meta name="twitter:url" content="https://lukmanzaman.github.io/it/">
     <meta name="twitter:title" content="VIS Museum of Computing &amp; CS">
     <meta name="twitter:description" content="Penjelajahan visual interaktif 800+ konsep fundamental ilmu komputer: arsitektur sistem, jaringan, algoritma, OS, AI, database, dan sejarah teknologi komputasi.">
-    <meta name="twitter:image" content="https://lukmanzaman.github.io/it/jpg/E1-01-history-computing/colossus.jpg">
+    <meta name="twitter:image" content="https://lukmanzaman.github.io/it/thumb.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -967,7 +967,7 @@ html, body, #readerView, .doom-feed, .article-frame {
     </div>
 <!-- FULLSCREEN READER VIEW (100% PURE FIT-WIDTH CONTINUOUS STREAM) -->
     <div id="readerView">
-        <nav class="reader-nav nav-hidden" id="readerNav" onclick="event.stopPropagation();">
+        <nav class="reader-nav nav-hidden" id="readerNav" onclick="event.stopPropagation();" onpointerdown="event.stopPropagation();">
             <button type="button" class="nav-back-btn" onclick="closeReader();" title="Kembali ke Galeri">
                 <span>←</span> <span>Kembali</span>
             </button>
@@ -1151,14 +1151,85 @@ if (typeof window !== 'undefined' && window.history && 'scrollRestoration' in wi
             heroPosterDeck.innerHTML = html;
         }
 
-        function normalizeStr(s) {
-            return (s || '').toLowerCase().replace(/[-_.\s]+/g, ' ').trim();
+                const SYNONYMS = {
+            "saham": ["share", "shares", "stock", "stocks", "equity", "equities"],
+            "saha": ["share", "shares", "stock", "stocks", "equity", "equities"],
+            "pasar": ["market", "markets", "exchange"],
+            "uang": ["money", "cash", "currency", "wealth"],
+            "kas": ["cash", "liquidity"],
+            "obligasi": ["bond", "bonds", "debt", "treasury"],
+            "surat utang": ["bond", "bonds", "debt"],
+            "reksadana": ["mutual fund", "etf", "index fund"],
+            "dividen": ["dividend", "dividends", "yield"],
+            "utang": ["debt", "liability", "leverage", "borrowing"],
+            "hutang": ["debt", "liability", "leverage", "borrowing"],
+            "pajak": ["tax", "taxes", "taxation"],
+            "keuangan": ["finance", "financial", "treasury"],
+            "inflasi": ["inflation", "cpi", "purchasing power"],
+            "bunga": ["interest", "yield", "rate"],
+            "pendapatan": ["revenue", "income", "sales", "earnings"],
+            "omzet": ["revenue", "turnover", "sales"],
+            "omset": ["revenue", "turnover", "sales"],
+            "laba": ["profit", "gain", "margin", "ebitda"],
+            "untung": ["profit", "gain", "return"],
+            "rugi": ["loss", "drawdown"],
+            "investasi": ["invest", "investment", "investing", "portfolio"],
+            "valuasi": ["valuation", "multiple", "dcf", "pe ratio"],
+            "neraca": ["balance sheet", "assets", "liabilities"],
+            "arus kas": ["cash flow", "cashflow"],
+            "karyawan": ["employee", "team", "staff", "talent"],
+            "pegawai": ["employee", "team", "staff", "talent"],
+            "pelanggan": ["customer", "consumer", "client", "buyer"],
+            "konsumen": ["consumer", "customer", "buyer"],
+            "negosiasi": ["negotiate", "negotiation", "bargaining"],
+            "penjualan": ["sales", "selling", "close", "closing"],
+            "persaingan": ["competition", "competitor", "rivalry", "moat"],
+            "kompetisi": ["competition", "competitor", "rivalry", "moat"],
+            "manajemen": ["management", "operations", "system"],
+            "kepemimpinan": ["leadership", "leader", "executive", "ceo"],
+            "pemimpin": ["leader", "leadership", "executive", "ceo"],
+            "gaji": ["salary", "compensation", "wage"],
+            "properti": ["real estate", "property", "reit", "mortgage"],
+            "rumah": ["housing", "property", "mortgage"],
+            "asuransi": ["insurance", "annuity", "underwriting"],
+            "pensiun": ["retirement", "401k", "pension", "fire"],
+            "emas": ["gold", "precious metal", "commodity"],
+            "minyak": ["oil", "commodity", "energy"],
+            "komoditas": ["commodity", "commodities", "raw materials"],
+            "kripto": ["crypto", "bitcoin", "blockchain"],
+            "akuntansi": ["accounting", "audit", "gaap", "ledger"],
+            "audit": ["audit", "compliance", "fraud"],
+            "kecurangan": ["fraud", "scandal", "enron", "ponzi"],
+            "skandal": ["scandal", "fraud", "collapse", "crisis"],
+            "krisis": ["crisis", "bubble", "panic", "crash", "recession"],
+            "resesi": ["recession", "depression", "downturn", "crisis"],
+            "gelembung": ["bubble", "speculation", "tulip", "dotcom"],
+            "jaringan": ["network", "tcp", "ip", "dns", "http", "socket", "packet"],
+            "keamanan": ["security", "crypto", "encryption", "auth", "firewall", "tls"],
+            "bahasa": ["language", "c", "python", "javascript", "rust", "compiler"],
+            "memori": ["memory", "ram", "cache", "stack", "heap", "pointer"],
+            "arsitektur": ["architecture", "cpu", "system", "arm", "x86", "bus"],
+            "basis data": ["database", "sql", "nosql", "postgres", "index", "acid"],
+            "kecerdasan": ["ai", "neural", "machine learning", "deep learning", "llm"]
+        };
+
+        function getExpandedQueries(query) {
+            if (!query) return [];
+            const q = query.toLowerCase().trim();
+            const queries = [q];
+            for (const [k, list] of Object.entries(SYNONYMS)) {
+                if (k.startsWith(q) || q.startsWith(k) || k.includes(q)) {
+                    list.forEach(item => {
+                        if (!queries.includes(item)) queries.push(item);
+                    });
+                }
+            }
+            return queries;
         }
 
         function isImageMatch(img, query) {
             if (!query) return true;
-            const q = query.toLowerCase().trim();
-            const qNorm = q.replace(/[-_.\s]+/g, ' ');
+            const queryList = getExpandedQueries(query);
 
             const name = (img.name || '').toLowerCase();
             const nameNorm = name.replace(/[-_.\s]+/g, ' ');
@@ -1168,9 +1239,32 @@ if (typeof window !== 'undefined' && window.history && 'scrollRestoration' in wi
             const title = (img.cleanTitle || img.title || '').toLowerCase();
             const titleNorm = title.replace(/[-_.\s]+/g, ' ');
 
-            return name.includes(q) || nameNorm.includes(qNorm) ||
-                   fn.includes(q) || fnNorm.includes(qNorm) ||
-                   title.includes(q) || titleNorm.includes(qNorm);
+            return queryList.some(q => {
+                const qNorm = q.replace(/[-_.\s]+/g, ' ');
+                return name.includes(q) || nameNorm.includes(qNorm) ||
+                       fn.includes(q) || fnNorm.includes(qNorm) ||
+                       title.includes(q) || titleNorm.includes(qNorm);
+            });
+        }
+
+        function isFolderMatch(f, query) {
+            if (!query) return true;
+            const queryList = getExpandedQueries(query);
+            const disp = (f.displayName || '').toLowerCase();
+            const dispNorm = disp.replace(/[-_.\s]+/g, ' ');
+            const raw = (f.rawName || '').toLowerCase();
+            const rawNorm = raw.replace(/[-_.\s]+/g, ' ');
+            const theme = (f.themeTitle || '').toLowerCase();
+            const themeNorm = theme.replace(/[-_.\s]+/g, ' ');
+
+            const folderMatches = queryList.some(q => {
+                const qNorm = q.replace(/[-_.\s]+/g, ' ');
+                return disp.includes(q) || dispNorm.includes(qNorm) ||
+                       raw.includes(q) || rawNorm.includes(qNorm) ||
+                       theme.includes(q) || themeNorm.includes(qNorm);
+            });
+
+            return folderMatches || (f.images || []).some(img => isImageMatch(img, query));
         }
 
         function getFilteredFolders() {
@@ -1179,7 +1273,7 @@ if (typeof window !== 'undefined' && window.history && 'scrollRestoration' in wi
                 const matchCat = (activeCategory === 'all') || isFolderInCategory(f, activeCategory);
                 if (!matchCat) return false;
                 if (!query) return true;
-                return (f.images || []).some(img => isImageMatch(img, query));
+                return isFolderMatch(f, query);
             });
         }
 
