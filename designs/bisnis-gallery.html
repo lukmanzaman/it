@@ -60,83 +60,16 @@
             background-image: none !important;
         }
 
-        /* GLOBAL NETWORK TOP BAR */
-        .network-top-bar {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--primary-border);
-            padding: 0.55rem 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .network-links-scroll {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            white-space: nowrap;
-        }
-        .network-links-scroll::-webkit-scrollbar { display: none; }
-
-        .network-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.32rem 0.85rem;
-            border-radius: 9999px;
-            background: #FFFFFF;
-            border: 1px solid var(--primary-border);
-            color: var(--text-body);
-            text-decoration: none;
-            font-size: 0.76rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            flex-shrink: 0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-        }
-
-        .network-pill:hover {
-            border-color: var(--primary);
-            color: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-
-        .network-pill.active {
-            background: linear-gradient(135deg, #DC2626, #EA580C);
-            border-color: var(--primary);
-            color: #FFFFFF;
-            font-weight: 700;
-            box-shadow: 0 2px 10px var(--accent-glow);
-        }
-
-        .network-pill.github {
-            margin-left: auto;
-            background: #0F172A;
-            color: #FFFFFF;
-            border-color: #0F172A;
-        }
-        .network-pill.github:hover {
-            background: #1E293B;
-        }
-
         .container {
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 6rem;
+            padding: 2.5rem 1.5rem 6rem;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 1.25rem 1rem 4rem;
+                padding: 1.5rem 1rem 4rem;
             }
         }
 
@@ -146,7 +79,7 @@
             grid-template-columns: 1.1fr 1fr;
             gap: 3rem;
             align-items: center;
-            padding: 2.5rem 0 3.5rem;
+            padding: 3rem 0 4rem;
             border-bottom: 2px dashed var(--primary-border);
             margin-bottom: 3.5rem;
             perspective: 1200px;
@@ -891,114 +824,9 @@
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-
-        /* NETWORK FOOTER */
-        .network-footer {
-            border-top: 2px dashed var(--primary-border);
-            padding: 4rem 1.5rem 5rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.4);
-            margin-top: 4rem;
-        }
-
-        .footer-hub-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 1rem;
-            border-radius: 9999px;
-            background: var(--primary-soft-bg);
-            border: 1px solid var(--primary-border);
-            color: var(--primary-dark);
-            font-size: 0.74rem;
-            font-family: var(--font-mono);
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links-grid {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.25rem 2rem;
-            flex-wrap: wrap;
-            max-width: 960px;
-            margin: 0 auto 1.75rem;
-        }
-
-        .footer-links-grid a {
-            color: var(--text-heading);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.88rem;
-            transition: all 0.2s;
-        }
-
-        .footer-links-grid a:hover {
-            color: var(--primary);
-            transform: translateY(-1px);
-        }
-
-        .footer-sub-links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .footer-sub-links a {
-            color: var(--primary-dark);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer-sub-links a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-copy {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-        }
     </style>
 </head>
 <body class="view-home">
-
-    <!-- GLOBAL NETWORK TOP BAR -->
-    <header class="network-top-bar">
-        <div class="network-links-scroll">
-            <a href="https://radinx.com/" class="network-pill" target="_blank">
-                <span>🐰</span> <span>RadinX Portal</span>
-            </a>
-            <a href="https://lukmanzaman.github.io/it/" class="network-pill ">
-                <span>💻</span> <span>CS &amp; Tech (839)</span>
-            </a>
-            <a href="https://lukmanzaman.github.io/marketing/" class="network-pill ">
-                <span>📈</span> <span>Marketing (1.161)</span>
-            </a>
-            <a href="https://lukmanzaman.github.io/bisnis/" class="network-pill active">
-                <span>🏮</span> <span>Bisnis &amp; Finance (1.500+)</span>
-            </a>
-            <a href="https://lukmanzaman.github.io/filsafat-babi/" class="network-pill" target="_blank">
-                <span>🏛️</span> <span>Pigura Pikiran (100)</span>
-            </a>
-            <a href="https://sejutacerita.com/" class="network-pill" target="_blank">
-                <span>🌙</span> <span>Sejuta Cerita</span>
-            </a>
-            <a href="https://sejutakomik.com/" class="network-pill" target="_blank">
-                <span>📸</span> <span>Humor Foto</span>
-            </a>
-            <a href="https://github.com/lukmanzaman/bisnis" class="network-pill github" target="_blank">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span>GitHub Repo</span>
-            </a>
-        </div>
-    </header>
 
     <div id="homeView">
         <div class="container">
@@ -1052,30 +880,6 @@
                 <!-- Injected via JS -->
             </section>
         </div>
-
-        <!-- RICH SISTER NETWORK FOOTER -->
-        <footer class="network-footer">
-            <div class="footer-hub-badge">
-                <span>⚡ VIS NETWORK • VERTICAL INFOGRAPHIC STREAM</span>
-            </div>
-            <div class="footer-links-grid">
-                <a href="https://lukmanzaman.github.io/it/">💻 VIS Sains Komputer &amp; AI (839 Poster)</a>
-                <a href="https://lukmanzaman.github.io/marketing/">📈 VIS Marketing &amp; Strategy (1.161 Poster)</a>
-                <a href="https://lukmanzaman.github.io/bisnis/">🏮 VIS Bisnis &amp; Keuangan (1.500+ Poster)</a>
-                <a href="https://lukmanzaman.github.io/filsafat-babi/">🏛️ Pigura Pikiran • 100 Eksperimen Filsafat</a>
-                <a href="https://radinx.com/">🐰 RadinX Creative Portal</a>
-                <a href="https://sejutacerita.com/">🌙 Sejuta Cerita</a>
-                <a href="https://sejutakomik.com/">📸 Humor dalam Foto</a>
-            </div>
-            <div class="footer-sub-links">
-                <a href="https://github.com/lukmanzaman/bisnis" target="_blank">🐙 GitHub Source Repository</a>
-                <span>•</span>
-                <a href="https://istts.ac.id/" target="_blank">Institut STTS (AI Campus)</a>
-            </div>
-            <p class="footer-copy">
-                © 2026 VIS Engine • Pure Continuous Vertical Stream • Zero CLS &amp; Proactive Memory.
-            </p>
-        </footer>
     </div>
 
     <!-- FULLSCREEN READER VIEW -->
@@ -1384,7 +1188,7 @@
             buildDoomFeed();
             buildPickerDropdown();
 
-            // Initial brief glimpse of reader nav, then auto-immersion
+            // Auto-immersion: briefly flash then hide
             showNav();
             setTimeout(() => {
                 if (!navPickerDropdown.classList.contains('is-open')) {
