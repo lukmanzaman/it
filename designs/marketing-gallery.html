@@ -63,7 +63,7 @@
         /* GLOBAL NETWORK TOP BAR */
         .network-top-bar {
             width: 100%;
-            background: rgba(255, 255, 255, 0.82);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--primary-border);
@@ -654,7 +654,7 @@
         }
 
         /* ========================================================
-           READER VIEW (DOOM-SCROLL WITH IDENTICAL AUTO-HIDE NAV)
+           READER VIEW (DOOM-SCROLL WITH PURE IMMERSION TAP-TO-TOGGLE NAV)
            ======================================================== */
         #readerView {
             display: none;
@@ -683,7 +683,8 @@
             box-sizing: border-box;
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+            pointer-events: auto;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
         }
 
         .reader-nav.nav-hidden {
@@ -744,7 +745,7 @@
             transition: all 0.15s ease;
         }
 
-        .nav-picker-btn:hover {
+        .nav-picker-btn:hover, .nav-picker-btn.active {
             background: var(--primary);
         }
 
@@ -1079,7 +1080,7 @@
 
     <!-- FULLSCREEN READER VIEW -->
     <div id="readerView">
-        <nav class="reader-nav" id="readerNav">
+        <nav class="reader-nav nav-hidden" id="readerNav" onclick="event.stopPropagation();">
             <button type="button" class="nav-back-btn" onclick="closeReader();">
                 <span>✕</span> <span>Tutup</span>
             </button>
@@ -1087,10 +1088,10 @@
             
             <div style="position: relative;">
                 <button type="button" class="nav-picker-btn" id="navPickerBtn" onclick="togglePickerDropdown(event);">
-                    <span id="navPickerLabel">Pilih Artikel</span>
+                    <span id="navPickerLabel">#1 Judul Artikel</span>
                     <span style="font-size: 0.65rem;">▼</span>
                 </button>
-                <div class="nav-picker-dropdown" id="navPickerDropdown">
+                <div class="nav-picker-dropdown" id="navPickerDropdown" onclick="event.stopPropagation();">
                     <div class="picker-header">
                         <span>DAFTAR ARTIKEL</span>
                         <span id="pickerTotalBadge">0</span>
@@ -1162,9 +1163,9 @@
         let currentSearch = '';
         let currentFeedImages = [];
         let currentFolderRaw = null;
+        let currentActiveIdx = 0;
         let observer = null;
-        let lastScrollY = window.scrollY;
-        let isNavHidden = false;
+        let isNavVisible = false;
         let isRestoring = false;
 
         const STORAGE_KEY = 'vis_marketing_positions';
@@ -1335,6 +1336,37 @@
             if (currentView === 'wall') renderPosterWall();
         }
 
+        function showNav() {
+            nav.classList.remove('nav-hidden');
+            isNavVisible = true;
+        }
+
+        function hideNav() {
+            nav.classList.add('nav-hidden');
+            isNavVisible = false;
+            closePickerDropdown();
+        }
+
+        function toggleNav() {
+            if (isNavVisible) hideNav();
+            else showNav();
+        }
+
+        function togglePickerDropdown(e) {
+            if (e) e.stopPropagation();
+            const isOpen = navPickerDropdown.classList.contains('is-open');
+            if (isOpen) closePickerDropdown();
+            else {
+                navPickerDropdown.classList.add('is-open');
+                navPickerBtn.classList.add('active');
+            }
+        }
+
+        function closePickerDropdown() {
+            if (navPickerDropdown) navPickerDropdown.classList.remove('is-open');
+            if (navPickerBtn) navPickerBtn.classList.remove('active');
+        }
+
         function openReader(folderRaw, startIdx = 0) {
             const folder = folderMap[folderRaw];
             if (!folder) return;
@@ -1353,6 +1385,14 @@
             buildDoomFeed();
             buildPickerDropdown();
 
+            // Initial brief glimpse of reader nav, then auto-immersion
+            showNav();
+            setTimeout(() => {
+                if (!navPickerDropdown.classList.contains('is-open')) {
+                    hideNav();
+                }
+            }, 2200);
+
             const saved = getSavedPosition(folderRaw);
             if (startIdx > 0) {
                 setTimeout(() => scrollToArticle(startIdx), 60);
@@ -1360,7 +1400,7 @@
                 isRestoring = true;
                 setTimeout(() => {
                     window.scrollTo({ top: saved.scrollY, behavior: 'instant' });
-                    showToast('Melanjutkan ke posisi bacaan terakhir...');
+                    showToast(`Melanjutkan dari artikel #${saved.artIdx || 1}`);
                     setTimeout(() => { isRestoring = false; }, 300);
                 }, 80);
             } else {
@@ -1372,6 +1412,7 @@
             saveCurrentPosition();
             if (observer) observer.disconnect();
 
+            hideNav();
             readerView.style.display = 'none';
             homeView.style.display = 'block';
             document.body.classList.remove('view-reader');
@@ -1391,6 +1432,7 @@
                     if (entry.isIntersecting) {
                         const frame = entry.target;
                         const idx = parseInt(frame.dataset.index, 10);
+                        currentActiveIdx = idx;
                         loadFrameImage(frame);
                         preloadRunway(idx);
                         updatePickerActiveIndex(idx);
@@ -1443,27 +1485,17 @@
                 html += `
                     <div class="picker-item" onclick="scrollToArticle(${idx});">
                         <img src="${img.url}" class="picker-item-thumb" alt="Thumb" loading="lazy">
-                        <span class="picker-item-title">${idx + 1}. ${escapeHtml(img.cleanTitle || img.name)}</span>
+                        <span class="picker-item-title">#${idx + 1} ${escapeHtml(img.cleanTitle || img.name)}</span>
                     </div>
                 `;
             });
             navPickerList.innerHTML = html;
         }
 
-        function togglePickerDropdown(e) {
-            e.stopPropagation();
-            navPickerDropdown.classList.toggle('is-open');
-        }
-
-        document.addEventListener('click', (e) => {
-            if (navPickerDropdown && !navPickerDropdown.contains(e.target) && e.target !== navPickerBtn) {
-                navPickerDropdown.classList.remove('is-open');
-            }
-        });
-
         function updatePickerActiveIndex(idx) {
-            if (navPickerLabel) {
-                navPickerLabel.textContent = `Visual ${idx + 1} / ${currentFeedImages.length}`;
+            if (navPickerLabel && currentFeedImages[idx]) {
+                const title = currentFeedImages[idx].cleanTitle || currentFeedImages[idx].name || '';
+                navPickerLabel.textContent = `#${idx + 1} ${title}`;
             }
             const items = navPickerList.querySelectorAll('.picker-item');
             items.forEach((it, i) => {
@@ -1475,33 +1507,33 @@
         function scrollToArticle(idx) {
             const frame = document.getElementById(`art-frame-${idx}`);
             if (frame) {
-                navPickerDropdown.classList.remove('is-open');
+                closePickerDropdown();
                 loadFrameImage(frame);
                 preloadRunway(idx);
                 frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updatePickerActiveIndex(idx);
             }
         }
 
         function setupReaderInteraction() {
+            // Auto-hide nav on scrolling to prevent obstruction
             window.addEventListener('scroll', () => {
                 if (readerView.style.display !== 'block' || isRestoring) return;
-
-                const currentY = window.scrollY;
-                if (currentY > lastScrollY && currentY > 120 && !isNavHidden) {
-                    nav.classList.add('nav-hidden');
-                    isNavHidden = true;
-                } else if (currentY < lastScrollY && isNavHidden) {
-                    nav.classList.remove('nav-hidden');
-                    isNavHidden = false;
+                if (isNavVisible) {
+                    hideNav();
                 }
-                lastScrollY = currentY;
                 saveCurrentPositionDebounced();
             }, { passive: true });
 
+            // Tap top zone (clientY <= 90) to toggle nav, tap elsewhere to dismiss
             document.addEventListener('click', (e) => {
-                if (readerView.style.display === 'block' && isNavHidden && e.clientY <= 90) {
-                    nav.classList.remove('nav-hidden');
-                    isNavHidden = false;
+                if (readerView.style.display !== 'block') return;
+                if (e.target.closest('#readerNav') || e.target.closest('#restoreToast')) return;
+
+                if (e.clientY <= 90) {
+                    toggleNav();
+                } else {
+                    hideNav();
                 }
             });
         }
@@ -1509,14 +1541,15 @@
         let saveTimeout = null;
         function saveCurrentPositionDebounced() {
             clearTimeout(saveTimeout);
-            saveTimeout = setTimeout(saveCurrentPosition, 250);
+            saveTimeout = setTimeout(saveCurrentPosition, 200);
         }
 
         function saveCurrentPosition() {
-            if (!currentFolderRaw || readerView.style.display !== 'block') return;
+            if (!currentFolderRaw || readerView.style.display !== 'block' || isRestoring) return;
             try {
                 let positions = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
                 positions[currentFolderRaw] = {
+                    artIdx: currentActiveIdx + 1,
                     scrollY: window.scrollY,
                     total: currentFeedImages.length,
                     ts: Date.now()
@@ -1540,7 +1573,7 @@
             if (!toast || !text) return;
             text.textContent = msg;
             toast.classList.add('is-visible');
-            setTimeout(() => toast.classList.remove('is-visible'), 3200);
+            setTimeout(() => toast.classList.remove('is-visible'), 3000);
         }
 
         function toggleFullScreen() {
