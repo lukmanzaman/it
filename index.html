@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>VIS Computer Science &amp; Technology • Vertical Infographic Stream</title>
-    <meta name="description" content="Eksplorasi visual 830+ konsep sains komputer, AI, algoritma, data science, dan cybersecurity dalam format continuous vertical stream. The Productive Doomscroll.">
+    <meta name="description" content="Eksplorasi visual 839+ konsep sains komputer, AI, algoritma, data science, dan cybersecurity dalam format continuous vertical stream. The Productive Doomscroll.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -834,7 +834,7 @@
 
                 <!-- THEME FILTER CHIPS -->
                 <div class="theme-chips-bar" id="themeChipsBar">
-                    <button class="chip active" data-theme="">✨ Semua Tema (31)</button><button class="chip" data-theme="E1">💻 E1 • History & Tech (7)</button><button class="chip" data-theme="E2">🤖 E2 • AI & Machine Learning (7)</button><button class="chip" data-theme="E3">⚡ E3 • Computer Science (6)</button><button class="chip" data-theme="E4">📊 E4 • Data & Statistics (6)</button><button class="chip" data-theme="E5">🛡️ E5 • Cybersecurity (5)</button>
+                    <button class="chip active" data-theme="">Semua Tema (31)</button><button class="chip" data-theme="E1">💻 E1 • History & Tech (7)</button><button class="chip" data-theme="E2">🤖 E2 • AI & Machine Learning (7)</button><button class="chip" data-theme="E3">⚡ E3 • Computer Science (6)</button><button class="chip" data-theme="E4">📊 E4 • Data & Statistics (6)</button><button class="chip" data-theme="E5">🛡️ E5 • Cybersecurity (5)</button>
                 </div>
             </header>
 
@@ -1943,7 +1943,7 @@
     </div>
 
     <!-- Load Embedded Dataset (With Cache Buster) -->
-    <script src="data.js?v=1787692885"></script>
+    <script src="data.js?v=1788222900"></script>
 
     <script>
         const libraryData = (window.libraryData || []);
@@ -2149,10 +2149,8 @@
             navFolderTitle.textContent = folder.displayName;
             document.title = `${folder.displayName} • VIS Stream`;
 
-            // Default lenyap saat masuk reader agar tidak menghalangi
             hideNav();
 
-            // Build Picker Dropdown
             pickerTotalBadge.textContent = `${folder.imageCount} Poster`;
             navPickerList.innerHTML = '';
             folder.images.forEach((img, idx) => {
@@ -2169,7 +2167,6 @@
                 navPickerList.appendChild(div);
             });
 
-            // Build Continuous Vertical Stream
             let feedHtml = '';
             folder.images.forEach((img, idx) => {
                 const itemNum = idx + 1;
@@ -2189,7 +2186,6 @@
 
             setupLazyObserver();
 
-            // Handle scroll position restoration
             let savedPos = folderPositions[folder.rawName];
             let startIdx = targetArticleIndex > 0 ? targetArticleIndex : (savedPos ? savedPos.artIdx : 1);
 
@@ -2241,11 +2237,9 @@
             });
         }
 
-        // Scroll listener: langsung sembunyikan navbar saat user mulai scroll
         function handleReaderScroll() {
             if (!currentActiveFolder || isRestoringScroll) return;
 
-            // Sembunyikan navbar saat user mulai scroll membaca
             if (!nav.classList.contains('nav-hidden')) {
                 hideNav();
             }
@@ -2316,7 +2310,6 @@
             setTimeout(() => { restoreToast.classList.remove('show'); }, 2500);
         }
 
-        // ================= TAP/CLICK SCREEN LISTENER (PERSIS SEPERTI MARKETING SITE) =================
         document.addEventListener('click', (e) => {
             if (!currentActiveFolder) {
                 document.querySelectorAll('.card-dropdown-menu').forEach(m => m.classList.remove('show'));
@@ -2330,7 +2323,6 @@
                 return;
             }
 
-            // Tekan area atas (<= 90px) untuk toggle nav, tekan area lain untuk langsung lenyapkan
             if (e.clientY <= 90) {
                 toggleNav();
             } else {
@@ -2338,7 +2330,6 @@
             }
         });
 
-        // ================= HOME VIEW DROPDOWNS & THEME CHIPS =================
         function toggleCardDropdown(btn) {
             const menu = btn.nextElementSibling;
             const isOpen = menu.classList.contains('show');
@@ -2358,7 +2349,6 @@
             closeSearchDropdown();
         });
 
-        // Theme Filter Chips Handling
         themeChipsBar.querySelectorAll('.chip').forEach(chip => {
             chip.addEventListener('click', () => {
                 themeChipsBar.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
@@ -2379,7 +2369,6 @@
             });
         }
 
-        // ================= GLOBAL LIVE SEARCH =================
         globalSearchInput.addEventListener('input', () => {
             const query = globalSearchInput.value.trim().toLowerCase();
             clearSearchBtn.style.display = query ? 'flex' : 'none';
@@ -2446,7 +2435,6 @@
             searchDropdown.classList.remove('active');
         }
 
-        // ================= ROUTE & URL HASH HANDLING =================
         function setRoute(rawName, artIdx) {
             if (!rawName) {
                 history.replaceState(null, '', window.location.pathname + window.location.search);
