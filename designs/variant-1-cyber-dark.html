@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>VIS Tech • Cyber Obsidian Edition</title>
+    <meta name="description" content="Visual stream of 830+ computer science, AI, algorithms, data, and cybersecurity concepts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --bg-body: #07090E;
+            --card-bg: rgba(18, 24, 38, 0.75);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-title: #FFFFFF;
+            --text-body: #94A3B8;
+            --text-muted: #64748B;
+            --primary: #06B6D4;
+            --primary-glow: rgba(6, 182, 212, 0.4);
+            --secondary-glow: rgba(139, 92, 246, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-body);
+            background-color: var(--bg-body);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(6, 182, 212, 0.1) 0%, transparent 35%),
+                radial-gradient(circle at 90% 40%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+            background-attachment: fixed;
+        }
+
+        body.view-reader {
+            background: #05070A !important;
+            background-image: none !important;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem 5rem;
+        }
+
+        /* HERO HEADER */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.75rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.4rem 1rem;
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            letter-spacing: 0.1em;
+            color: #22D3EE;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22D3EE;
+            box-shadow: 0 0 10px #22D3EE;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #FFFFFF 20%, #A5F3FC 60%, #C4B5FD 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: #94A3B8;
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* LIVE STATS BAR */
+        .stats-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.75rem auto 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            font-family: var(--font-mono);
+            color: #CBD5E1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.35rem 0.85rem;
+            border-radius: 8px;
+        }
+
+        .stat-pill strong {
+            color: #22D3EE;
+            font-weight: 700;
+        }
+
+        /* SEARCH BAR */
+        .search-wrapper {
+            position: relative;
+            max-width: 720px;
+            margin: 1.75rem auto 1.5rem;
+            z-index: 100;
+        }
+
+        .search-input-box {
+            display: flex;
+            align-items: center;
+            background: rgba(18, 24, 38, 0.85);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 16px;
+            padding: 0.65rem 1rem 0.65rem 1.4rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 16px rgba(6, 182, 212, 0.05);
+            backdrop-filter: blur(16px);
+            transition: all 0.25s ease;
+        }
+
+        .search-input-box:focus-within {
+            border-color: #22D3EE;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.25), 0 12px 36px rgba(0, 0, 0, 0.6);
+        }
+
+        .search-icon-left {
+            color: #22D3EE;
+            margin-right: 0.85rem;
+            font-size: 1.15rem;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 500;
+            color: #FFFFFF;
+        }
+
+        .search-input::placeholder {
+            color: #64748B;
+        }
+
+        .search-clear-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #94A3B8;
+            font-size: 0.85rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+        }
+
+        .search-clear-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+        }
+
+        .search-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            right: 0;
+            background: #111622;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            display: none;
+            z-index: 1000;
+        }
+
+        .search-dropdown.active {
+            display: block;
+        }
+
+        .dropdown-header {
+            padding: 0.75rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: #94A3B8;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .search-result-item:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .result-folder-icon {
+            font-size: 1.35rem;
+            margin-right: 1rem;
+        }
+
+        .result-title-line {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+
+        .result-path-line {
+            font-size: 0.78rem;
+            color: #64748B;
+            margin-top: 0.2rem;
+            font-family: var(--font-mono);
+        }
+
+        .match-mark {
+            background: rgba(6, 182, 212, 0.25);
+            color: #38BDF8;
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        /* THEME FILTER CHIPS */
+        .theme-chips-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            padding: 0.5rem 0 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .chip {
+            padding: 0.5rem 1.1rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(18, 24, 38, 0.6);
+            color: #94A3B8;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .chip:hover {
+            border-color: #22D3EE;
+            color: #FFFFFF;
+        }
+
+        .chip.active {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(139, 92, 246, 0.25));
+            border-color: #22D3EE;
+            color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        /* GRID */
+        .folders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .folder-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            backdrop-filter: blur(16px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .folder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--theme-accent, #06B6D4);
+            box-shadow: 0 0 12px var(--theme-accent, #06B6D4);
+        }
+
+        .folder-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(6, 182, 212, 0.15);
+        }
+
+        .card-click-area {
+            padding: 1.5rem 1.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .folder-icon-box {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .folder-card:hover .folder-icon-box {
+            transform: scale(1.08);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--theme-accent, #06B6D4);
+        }
+
+        .folder-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .number-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            color: #94A3B8;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.15rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .theme-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+        }
+
+        .folder-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.35;
+            margin-top: 0.35rem;
+        }
+
+        /* CARD BOTTOM & BUTTONS */
+        .card-bottom-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem 1.5rem;
+            position: relative;
+        }
+
+        .btn-card-list {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #CBD5E1;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.5rem 0.95rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .btn-card-list:hover, .btn-card-list.active {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #22D3EE;
+            color: #FFFFFF;
+        }
+
+        .card-dropdown-menu {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 0;
+            width: 320px;
+            background: #111622;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            display: none;
+            z-index: 1000;
+        }
+
+        .card-dropdown-menu.show {
+            display: block;
+        }
+
+        .card-dropdown-header {
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-dropdown-list {
+            max-height: 220px;
+            overflow-y: auto;
+            padding: 0.35rem 0;
+        }
+
+        .card-dropdown-item {
+            padding: 0.55rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            color: #94A3B8;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .card-dropdown-item:hover {
+            background: rgba(6, 182, 212, 0.12);
+            color: #22D3EE;
+        }
+
+        .btn-read {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, #06B6D4, #2563EB);
+            color: #FFFFFF;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.55rem 1.25rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.35);
+            transition: all 0.2s ease;
+        }
+
+        .btn-read:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
+        }
+
+        /* READER VIEW */
+        #readerView {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #05070A;
+        }
+
+        .reader-nav {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: rgba(11, 16, 26, 0.94);
+            backdrop-filter: blur(20px);
+            padding: 0.45rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(6, 182, 212, 0.2);
+            max-width: 95vw;
+            transition: all 0.35s ease;
+        }
+
+        .reader-nav.nav-hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateX(-50%) translateY(-24px) !important;
+        }
+
+        .nav-back-btn, .nav-fullscreen-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.4rem 0.85rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: all 0.15s;
+        }
+
+        .nav-back-btn:hover, .nav-fullscreen-btn:hover {
+            background: rgba(6, 182, 212, 0.25);
+            border-color: #22D3EE;
+        }
+
+        .nav-title-text {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            max-width: 260px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-picker-btn {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: #22D3EE;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.4rem 0.85rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .nav-picker-dropdown {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 340px;
+            background: #111622;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+            display: none;
+        }
+
+        .nav-picker-dropdown.show {
+            display: block;
+        }
+
+        .nav-picker-list {
+            max-height: 260px;
+            overflow-y: auto;
+            padding: 0.4rem 0;
+        }
+
+        .nav-picker-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.55rem 1rem;
+            color: #94A3B8;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .nav-picker-item:hover {
+            background: rgba(6, 182, 212, 0.12);
+            color: #22D3EE;
+        }
+
+        .nav-picker-item.active {
+            background: linear-gradient(135deg, #06B6D4, #2563EB);
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        .doom-feed {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #05070A;
+        }
+
+        .article-frame {
+            width: 100%;
+            aspect-ratio: 1 / 3;
+            background-color: #0A0D14;
+            border-bottom: 2px solid #05070A;
+            overflow: hidden;
+        }
+
+        .article-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.2s ease-out;
+        }
+
+        .article-img.is-loaded {
+            opacity: 1;
+        }
+
+        .restore-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(30px);
+            background: #111622;
+            color: #22D3EE;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            padding: 0.6rem 1.4rem;
+            border-radius: 9999px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(6, 182, 212, 0.2);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .restore-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body class="view-home">
+    <div id="homeView">
+        <div class="container">
+            <header class="hero">
+                <div class="hero-badge">
+                    <span class="hero-badge-pulse"></span>
+                    <span>CYBER OBSIDIAN • VIS ENGINE 2.0</span>
+                </div>
+                <h1 class="hero-title">VIS Computer Science</h1>
+                <p class="hero-desc">Eksplorasi visual 839 konsep fundamental komputasi, AI, algoritma, data, dan cybersecurity dalam format continuous vertical stream.</p>
+
+                <div class="stats-bar" id="statsBar">
+                    <div class="stat-pill"><span>Domains:</span> <strong id="statDomains">5</strong></div>
+                    <div class="stat-pill"><span>Topics:</span> <strong id="statTopics">31</strong></div>
+                    <div class="stat-pill"><span>Total Visuals:</span> <strong id="statVisuals">839 Posters</strong></div>
+                    <div class="stat-pill"><span>Format:</span> <strong>Continuous 4K</strong></div>
+                </div>
+
+                <div class="search-wrapper" id="searchWrapper">
+                    <div class="search-input-box">
+                        <span class="search-icon-left">⚡</span>
+                        <input type="text" id="globalSearchInput" class="search-input" placeholder="Cari konsep, judul poster, atau topik komputasi..." autocomplete="off" spellcheck="false">
+                        <button type="button" id="clearSearchBtn" class="search-clear-btn">✕</button>
+                    </div>
+                    <div class="search-dropdown" id="searchDropdown">
+                        <div class="dropdown-header">
+                            <span>HASIL PENCARIAN</span>
+                            <span id="searchMatchCount">0 cocok</span>
+                        </div>
+                        <div id="searchResultList"></div>
+                    </div>
+                </div>
+
+                <div class="theme-chips-bar" id="themeChipsBar"></div>
+            </header>
+
+            <main class="folders-grid" id="foldersGrid"></main>
+        </div>
+    </div>
+
+    <!-- READER VIEW -->
+    <div id="readerView">
+        <nav class="reader-nav" id="readerNav" onclick="event.stopPropagation();">
+            <button type="button" class="nav-back-btn" onclick="closeReader();">
+                <span>← Kembali</span>
+            </button>
+            <span class="nav-title-text" id="navFolderTitle">Judul Folder</span>
+
+            <div style="position: relative;">
+                <button type="button" class="nav-picker-btn" id="navPickerBtn" onclick="togglePickerDropdown();">
+                    <span id="navPickerLabel">#1 Judul</span>
+                    <span>▾</span>
+                </button>
+                <div class="nav-picker-dropdown" id="navPickerDropdown">
+                    <div class="nav-picker-list" id="navPickerList"></div>
+                </div>
+            </div>
+
+            <button type="button" class="nav-fullscreen-btn" onclick="toggleFullScreen();">
+                <span>⛶</span>
+            </button>
+        </nav>
+
+        <div class="restore-toast" id="restoreToast">
+            <span id="restoreToastText">Melanjutkan membaca...</span>
+        </div>
+
+        <main class="doom-feed" id="doomFeed"></main>
+    </div>
+
+    <!-- Load base dataset from parent directory -->
+    <script src="../data.js"></script>
+
+    <script>
+        const libraryData = (window.libraryData || []).map(f => {
+            if (f && f.images) {
+                f.images.forEach(img => {
+                    if (img && img.url && !img.url.startsWith('../')) {
+                        img.url = '../' + img.url;
+                    }
+                });
+            }
+            return f;
+        });
+
+        const folderMap = {};
+        libraryData.forEach(f => { folderMap[f.rawName] = f; });
+
+        // DOM elements
+        const homeView = document.getElementById('homeView');
+        const readerView = document.getElementById('readerView');
+        const foldersGrid = document.getElementById('foldersGrid');
+        const themeChipsBar = document.getElementById('themeChipsBar');
+        const doomFeed = document.getElementById('doomFeed');
+        const nav = document.getElementById('readerNav');
+        const navFolderTitle = document.getElementById('navFolderTitle');
+        const navPickerBtn = document.getElementById('navPickerBtn');
+        const navPickerLabel = document.getElementById('navPickerLabel');
+        const navPickerDropdown = document.getElementById('navPickerDropdown');
+        const navPickerList = document.getElementById('navPickerList');
+        const globalSearchInput = document.getElementById('globalSearchInput');
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+        const searchDropdown = document.getElementById('searchDropdown');
+        const searchResultList = document.getElementById('searchResultList');
+        const searchMatchCount = document.getElementById('searchMatchCount');
+        const restoreToast = document.getElementById('restoreToast');
+        const restoreToastText = document.getElementById('restoreToastText');
+
+        let currentActiveFolder = null;
+        let currentActiveArtIdx = 1;
+        let homeScrollY = 0;
+        let imageObserver = null;
+        let selectedThemeFilter = '';
+
+        // Render Home Grid & Chips
+        function initHome() {
+            // Render Chips
+            const themeCodes = [...new Set(libraryData.map(f => f.themeCode))];
+            let chipsHtml = `<button class="chip active" data-theme="">✨ Semua (${libraryData.length})</button>`;
+            themeCodes.forEach(code => {
+                const sample = libraryData.find(f => f.themeCode === code);
+                const count = libraryData.filter(f => f.themeCode === code).length;
+                chipsHtml += `<button class="chip" data-theme="${code}">${sample.theme.icon} ${code} • ${sample.themeShortTitle} (${count})</button>`;
+            });
+            themeChipsBar.innerHTML = chipsHtml;
+
+            // Render Cards
+            let cardsHtml = '';
+            libraryData.forEach(f => {
+                let dropdownItems = '';
+                f.images.forEach((img, i) => {
+                    dropdownItems += `<div class="card-dropdown-item" onclick="event.stopPropagation(); openReader('${f.rawName}', ${i + 1});"><span style="font-family: var(--font-mono); color: var(--primary);">#${i + 1}</span> <span>${escapeHtml(img.cleanTitle)}</span></div>`;
+                });
+
+                cardsHtml += `
+                    <div class="folder-card" data-rawname="${f.rawName}" data-theme="${f.themeCode}" style="--theme-accent: ${f.theme.accent};">
+                        <div class="card-click-area" onclick="openReader('${f.rawName}');">
+                            <div class="card-top">
+                                <div class="folder-icon-box">${f.theme.icon}</div>
+                                <div class="folder-info">
+                                    <div style="display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.25rem;">
+                                        <span class="number-badge">#${f.number}</span>
+                                        <span class="theme-badge" style="color: ${f.theme.accent};">${f.code} • ${escapeHtml(f.themeShortTitle)}</span>
+                                    </div>
+                                    <h2 class="folder-title">${escapeHtml(f.displayName)}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-bottom-row">
+                            <div style="position: relative;">
+                                <button type="button" class="btn-card-list" onclick="event.stopPropagation(); toggleCardDropdown(this);">
+                                    <span>${f.imageCount} Poster</span>
+                                    <span>▾</span>
+                                </button>
+                                <div class="card-dropdown-menu">
+                                    <div class="card-dropdown-header">
+                                        <span>${escapeHtml(f.displayName)}</span>
+                                        <span>${f.imageCount} Poster</span>
+                                    </div>
+                                    <div class="card-dropdown-list">${dropdownItems}</div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-read" onclick="openReader('${f.rawName}');">
+                                <span>Buka Stream ⚡</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            foldersGrid.innerHTML = cardsHtml;
+
+            // Setup Chip Filters
+            themeChipsBar.querySelectorAll('.chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    themeChipsBar.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    selectedThemeFilter = chip.dataset.theme || '';
+                    foldersGrid.querySelectorAll('.folder-card').forEach(c => {
+                        c.style.display = (!selectedThemeFilter || c.dataset.theme === selectedThemeFilter) ? 'flex' : 'none';
+                    });
+                });
+            });
+        }
+
+        function toggleCardDropdown(btn) {
+            const menu = btn.nextElementSibling;
+            const isOpen = menu.classList.contains('show');
+            document.querySelectorAll('.card-dropdown-menu').forEach(m => m.classList.remove('show'));
+            document.querySelectorAll('.btn-card-list').forEach(b => b.classList.remove('active'));
+            if (!isOpen) {
+                menu.classList.add('show');
+                btn.classList.add('active');
+            }
+        }
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.card-dropdown-menu').forEach(m => m.classList.remove('show'));
+            document.querySelectorAll('.btn-card-list').forEach(b => b.classList.remove('active'));
+            closePickerDropdown();
+            closeSearchDropdown();
+        });
+
+        // Reader Mode
+        function openReader(rawName, targetArt) {
+            const folder = folderMap[rawName];
+            if (!folder) return;
+            homeScrollY = window.scrollY;
+            currentActiveFolder = folder;
+
+            document.body.className = 'view-reader';
+            homeView.style.display = 'none';
+            readerView.style.display = 'block';
+
+            navFolderTitle.textContent = folder.displayName;
+            hideNav();
+
+            // Build picker
+            let pickerHtml = '';
+            folder.images.forEach((img, i) => {
+                pickerHtml += `<div class="nav-picker-item ${i === 0 ? 'active' : ''}" data-idx="${i + 1}" onclick="event.stopPropagation(); jumpToArticle(${i + 1}); closePickerDropdown();"><span style="font-family:var(--font-mono);">#${i + 1}</span> <span>${escapeHtml(img.cleanTitle)}</span></div>`;
+            });
+            navPickerList.innerHTML = pickerHtml;
+
+            // Build Feed
+            let feedHtml = '';
+            folder.images.forEach((img, i) => {
+                feedHtml += `
+                    <section class="article-frame" id="art-${i + 1}" data-index="${i + 1}">
+                        <img class="article-img lazy-img" data-src="${img.url}" alt="${escapeHtml(img.cleanTitle)}" loading="lazy">
+                    </section>
+                `;
+            });
+            doomFeed.innerHTML = feedHtml;
+
+            setupLazyObserver();
+
+            let savedPos = JSON.parse(localStorage.getItem('vis_tech_positions') || '{}')[folder.rawName];
+            let startIdx = targetArt > 0 ? targetArt : (savedPos ? savedPos.artIdx : 1);
+            preloadRunway(startIdx);
+
+            if (targetArt > 0) {
+                jumpToArticle(targetArt, 'instant');
+            } else if (savedPos && savedPos.scrollY > 0) {
+                setTimeout(() => {
+                    window.scrollTo({ top: savedPos.scrollY, behavior: 'instant' });
+                    updateActiveArticleState(savedPos.artIdx);
+                    showToast(`Melanjutkan dari artikel #${savedPos.artIdx}`);
+                }, 50);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                updateActiveArticleState(1);
+            }
+        }
+
+        function closeReader() {
+            currentActiveFolder = null;
+            document.body.className = 'view-home';
+            readerView.style.display = 'none';
+            homeView.style.display = 'block';
+            window.scrollTo({ top: homeScrollY, behavior: 'instant' });
+        }
+
+        function jumpToArticle(artNum, behavior = 'smooth') {
+            const frame = document.getElementById('art-' + artNum);
+            if (frame) {
+                preloadRunway(artNum);
+                frame.scrollIntoView({ behavior: behavior, block: 'start' });
+                updateActiveArticleState(artNum);
+            }
+        }
+
+        function updateActiveArticleState(artNum) {
+            if (!currentActiveFolder || !currentActiveFolder.images) return;
+            currentActiveArtIdx = artNum;
+            const curItem = currentActiveFolder.images[artNum - 1];
+            if (curItem) navPickerLabel.textContent = `#${artNum} ${curItem.cleanTitle}`;
+            navPickerList.querySelectorAll('.nav-picker-item').forEach(it => {
+                it.classList.toggle('active', parseInt(it.dataset.idx, 10) === artNum);
+            });
+        }
+
+        function preloadRunway(currentIdx) {
+            if (!currentActiveFolder) return;
+            for (let i = Math.max(1, currentIdx - 2); i <= Math.min(currentActiveFolder.images.length, currentIdx + 6); i++) {
+                const frame = document.getElementById('art-' + i);
+                if (frame) {
+                    const img = frame.querySelector('img');
+                    if (img && img.dataset.src && img.src !== img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.onload = () => img.classList.add('is-loaded');
+                    }
+                }
+            }
+        }
+
+        function setupLazyObserver() {
+            if ('IntersectionObserver' in window) {
+                if (imageObserver) imageObserver.disconnect();
+                imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            const idx = parseInt(e.target.closest('.article-frame')?.dataset.index, 10);
+                            if (idx) preloadRunway(idx);
+                        }
+                    });
+                }, { rootMargin: '600px 0px' });
+                doomFeed.querySelectorAll('.lazy-img').forEach(img => imageObserver.observe(img));
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!currentActiveFolder) return;
+            if (!nav.classList.contains('nav-hidden')) hideNav();
+            const frames = doomFeed.querySelectorAll('.article-frame');
+            const midY = window.innerHeight * 0.35;
+            for (let i = 0; i < frames.length; i++) {
+                const rect = frames[i].getBoundingClientRect();
+                if (rect.top <= midY && rect.bottom >= midY) {
+                    const idx = parseInt(frames[i].dataset.index, 10);
+                    if (idx !== currentActiveArtIdx) {
+                        updateActiveArticleState(idx);
+                        preloadRunway(idx);
+                    }
+                    break;
+                }
+            }
+        }, { passive: true });
+
+        function showNav() { nav.classList.remove('nav-hidden'); }
+        function hideNav() { nav.classList.add('nav-hidden'); closePickerDropdown(); }
+        function togglePickerDropdown() { navPickerDropdown.classList.toggle('show'); }
+        function closePickerDropdown() { navPickerDropdown.classList.remove('show'); }
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+            else document.exitFullscreen().catch(()=>{});
+        }
+        function showToast(msg) {
+            restoreToastText.textContent = msg;
+            restoreToast.classList.add('show');
+            setTimeout(() => restoreToast.classList.remove('show'), 2500);
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!currentActiveFolder) return;
+            if (e.target.closest('#readerNav') || e.target.closest('#restoreToast')) return;
+            if (e.clientY <= 90) {
+                if (nav.classList.contains('nav-hidden')) showNav(); else hideNav();
+            } else hideNav();
+        });
+
+        // Search logic
+        globalSearchInput.addEventListener('input', () => {
+            const q = globalSearchInput.value.trim().toLowerCase();
+            clearSearchBtn.style.display = q ? 'flex' : 'none';
+            if (!q) { closeSearchDropdown(); return; }
+            const matches = [];
+            libraryData.forEach(f => {
+                f.images.forEach((img, idx) => {
+                    if (img.cleanTitle.toLowerCase().includes(q) || f.displayName.toLowerCase().includes(q)) {
+                        matches.push({ folder: f, artIdx: idx + 1, img: img });
+                    }
+                });
+            });
+            searchMatchCount.textContent = `${matches.length} cocok`;
+            if (matches.length === 0) {
+                searchResultList.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: #64748B;">Tidak ada hasil untuk "<strong>${escapeHtml(q)}</strong>"</div>`;
+            } else {
+                let html = '';
+                matches.slice(0, 10).forEach(m => {
+                    const regex = new RegExp(`(${q.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\$&')})`, 'gi');
+                    const hl = escapeHtml(m.img.cleanTitle).replace(regex, '<span class="match-mark">$1</span>');
+                    html += `
+                        <div class="search-result-item" onclick="openReader('${m.folder.rawName}', ${m.artIdx}); closeSearchDropdown();">
+                            <span class="result-folder-icon">${m.folder.theme.icon}</span>
+                            <div>
+                                <div class="result-title-line">${hl}</div>
+                                <div class="result-path-line">${m.folder.code} • ${escapeHtml(m.folder.displayName)} #${m.artIdx}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                searchResultList.innerHTML = html;
+            }
+            searchDropdown.classList.add('active');
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            globalSearchInput.value = '';
+            clearSearchBtn.style.display = 'none';
+            closeSearchDropdown();
+        });
+
+        function closeSearchDropdown() { searchDropdown.classList.remove('active'); }
+        function escapeHtml(str) { return str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : ''; }
+
+        initHome();
+    </script>
+</body>
+</html>

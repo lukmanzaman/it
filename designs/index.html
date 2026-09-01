@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>VIS Pink Lab • Cute Pink Glow Design Showcase 🌸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --bg: #FFF5F8;
+            --card-bg: #FFFFFF;
+            --border: #FCE7F3;
+            --text-heading: #831843;
+            --text-body: #701A75;
+            --text-muted: #9D174D;
+            --pink-primary: #F43F5E;
+            --pink-soft: #FB7185;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg);
+            color: var(--text-body);
+            min-height: 100vh;
+            padding: 4rem 1.5rem 6rem;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(244, 114, 182, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(251, 113, 133, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 50% 90%, rgba(244, 63, 94, 0.15) 0%, transparent 50%),
+                radial-gradient(rgba(244, 114, 182, 0.15) 1.5px, transparent 1.5px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1.25rem;
+            background: #FFF0F5;
+            border: 1.5px solid #F472B6;
+            border-radius: 9999px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #BE185D;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.25);
+        }
+
+        .title {
+            font-family: var(--font-display);
+            font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .title span {
+            background: linear-gradient(135deg, #E11D48, #DB2777, #C026D3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .desc {
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.65;
+            color: #9D174D;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border);
+            border-radius: 28px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(244, 114, 182, 0.12);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #F472B6;
+            box-shadow: 0 25px 50px rgba(244, 63, 94, 0.22), 0 0 25px rgba(251, 207, 232, 0.6);
+        }
+
+        .card-visual-header {
+            height: 180px;
+            background: #FFF0F5;
+            border-bottom: 1.5px dashed var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-body {
+            padding: 2.25rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .concept-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+            color: #BE185D;
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #831843;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .card-desc {
+            font-size: 0.94rem;
+            line-height: 1.65;
+            margin-bottom: 1.75rem;
+            color: #9D174D;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            font-size: 0.88rem;
+            color: #701A75;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-open {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.95rem 1.6rem;
+            border-radius: 9999px;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: #FFFFFF;
+            background: linear-gradient(135deg, #F43F5E, #EC4899);
+            transition: all 0.2s;
+            box-shadow: 0 4px 20px rgba(244, 63, 94, 0.4);
+        }
+
+        .btn-open:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 25px rgba(244, 63, 94, 0.55);
+        }
+
+        .card-v1 { border-top: 5px solid #F43F5E; }
+        .card-v2 { border-top: 5px solid #DB2777; }
+        .card-v3 { border-top: 5px solid #E11D48; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="badge">
+                <span>🌸 CUTE PINK LIGHT GLOW EDITION 💖</span>
+            </div>
+            <h1 class="title">Eksplorasi Konsep <span>Desain Pink Imut</span></h1>
+            <p class="desc">
+                Berikut 3 arsitektur antarmuka dalam <strong>Light Mode bernuansa pink glow estetik &amp; imut</strong> yang tetap mempertahankan keanggunan dan fungsionalitas 839 poster visual.
+            </p>
+        </header>
+
+        <main class="grid">
+            <!-- V1 -->
+            <article class="card card-v1">
+                <div class="card-visual-header">
+                    <div style="font-size: 3.8rem; filter: drop-shadow(0 4px 15px rgba(244,63,94,0.3));">🌸</div>
+                </div>
+                <div class="card-body">
+                    <div class="concept-tag">Konsep 1 • 3D Spatial Matrix</div>
+                    <h2 class="card-title">Pink Museum of AI</h2>
+                    <p class="card-desc">
+                        Galeri visual estetik dengan stage 3D tilted fan-deck di hero, poster triple-stage previews di setiap pameran, serta toggle instant ke mode <strong>"Poster Wall (839 Visuals)"</strong>.
+                    </p>
+                    <ul class="features">
+                        <li>🌸 3D Isometric Interactive Poster Fan-Deck</li>
+                        <li>🎀 Mode Toggle: Visual Exhibits &amp; Poster Wall (839)</li>
+                        <li>🍓 Triple-Poster Stage Preview per topik</li>
+                        <li>🛡️ Pure Immersion Reader dengan auto-hiding navbar</li>
+                    </ul>
+                    <a href="variant-1-matrix-gallery.html" class="btn-open">
+                        <span>Buka Pink Matrix Gallery 🌸</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- V2 -->
+            <article class="card card-v2">
+                <div class="card-visual-header">
+                    <div style="font-size: 3.8rem; filter: drop-shadow(0 4px 15px rgba(219,39,119,0.3));">🎀</div>
+                </div>
+                <div class="card-body">
+                    <div class="concept-tag">Konsep 2 • Galaxy Roadmap</div>
+                    <h2 class="card-title">The Sweet Skill-Tree</h2>
+                    <p class="card-desc">
+                        Peta penjelajahan pengetahuan terstruktur yang membagi 31 topik ke dalam 5 Galaksi dalam format milestone cards bernuansa strawberry pastel.
+                    </p>
+                    <ul class="features">
+                        <li>💖 5 Thematic Galaxies dengan visual pathway</li>
+                        <li>🦄 Milestone Node Cards dengan poster glimpse</li>
+                        <li>🔍 Search real-time lintas galaksi</li>
+                        <li>🛡️ Pure Immersion Reader dengan auto-hiding navbar</li>
+                    </ul>
+                    <a href="variant-2-tech-roadmap.html" class="btn-open">
+                        <span>Buka Sweet Skill-Tree Roadmap 🎀</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- V3 -->
+            <article class="card card-v3">
+                <div class="card-visual-header">
+                    <div style="font-size: 3.8rem; filter: drop-shadow(0 4px 15px rgba(225,29,72,0.3));">💖</div>
+                </div>
+                <div class="card-body">
+                    <div class="concept-tag">Konsep 3 • Editorial Studio</div>
+                    <h2 class="card-title">Dual-Pane Pink Studio</h2>
+                    <p class="card-desc">
+                        Layout split-view bergaya editorial majalah modern bernuansa pink cerah. Panel kiri berupa Topic Navigator cepat, dan panel kanan berupa Live Poster Moodboard.
+                    </p>
+                    <ul class="features">
+                        <li>🌸 Split Dual-Pane Layout (Sidebar + Live Canvas)</li>
+                        <li>🍓 Instant Poster Moodboard Showcase di panel kanan</li>
+                        <li>✨ Quick Topic Switcher &amp; Instant Filter</li>
+                        <li>🛡️ Pure Immersion Reader dengan auto-hiding navbar</li>
+                    </ul>
+                    <a href="variant-3-editorial-studio.html" class="btn-open">
+                        <span>Buka Dual-Pane Pink Studio 💖</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+</html>

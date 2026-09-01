@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>VIS Pink Studio • Sweet Editorial Showcase 💖</title>
+    <title>VIS Pink Matrix • Cute Pink 3D Gallery &amp; Poster Wall 🌸</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -13,13 +13,16 @@
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             --bg: #FFF5F7;
-            --sidebar: #FFFFFF;
-            --panel: #FFFFFF;
+            --surface: #FFFFFF;
+            --surface-card: rgba(255, 255, 255, 0.85);
             --border: #FCE7F3;
+            --border-glow: #F472B6;
             --text-heading: #831843;
             --text-body: #701A75;
             --text-muted: #9D174D;
             --pink-primary: #F43F5E;
+            --pink-soft: #FB7185;
+            --pink-light: #FBCFE8;
             --pink-glow: rgba(244, 63, 94, 0.35);
         }
 
@@ -36,296 +39,451 @@
             color: var(--text-body);
             min-height: 100vh;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(244, 114, 182, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 85% 25%, rgba(251, 113, 133, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(244, 63, 94, 0.15) 0%, transparent 50%),
+                radial-gradient(rgba(244, 114, 182, 0.12) 1.5px, transparent 1.5px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+            background-attachment: fixed;
         }
 
         body.view-reader {
             background: #180914 !important;
+            background-image: none !important;
         }
 
-        .studio-layout {
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 6rem;
+        }
+
+        /* 3D SPATIAL HERO STAGE */
+        .spatial-hero {
             display: grid;
-            grid-template-columns: 430px 1fr;
-            min-height: 100vh;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem 0 4rem;
+            border-bottom: 2px dashed #FBCFE8;
+            margin-bottom: 3.5rem;
+            perspective: 1200px;
         }
 
-        @media (max-width: 1024px) {
-            .studio-layout {
+        @media (max-width: 960px) {
+            .spatial-hero {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
             }
         }
 
-        /* LEFT SIDEBAR: TOPIC EXPLORER */
-        .sidebar {
-            background: var(--sidebar);
-            border-right: 1.5px solid var(--border);
+        .hero-left {
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            position: sticky;
-            top: 0;
-            overflow: hidden;
-            box-shadow: 4px 0 20px rgba(244, 114, 182, 0.08);
+            gap: 1.25rem;
         }
 
-        @media (max-width: 1024px) {
-            .sidebar {
-                height: auto;
-                position: relative;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.45rem 1.15rem;
+            background: #FFF0F5;
+            border: 1.5px solid #F472B6;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: #BE185D;
+            letter-spacing: 0.08em;
+            width: fit-content;
+            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.25);
+        }
+
+        @media (max-width: 960px) {
+            .hero-badge {
+                margin: 0 auto;
             }
         }
 
-        .sidebar-header {
-            padding: 2rem 1.75rem 1.5rem;
-            border-bottom: 1.5px dashed var(--border);
-            background: linear-gradient(180deg, #FFF0F5 0%, #FFFFFF 100%);
-        }
-
-        .brand-badge {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: #BE185D;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .brand-title {
+        .hero-title {
             font-family: var(--font-display);
-            font-size: 1.8rem;
+            font-size: clamp(2.8rem, 6vw, 4.6rem);
             font-weight: 800;
-            color: #831843;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
+            color: var(--text-heading);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
         }
 
-        .brand-sub {
-            font-size: 0.85rem;
+        .hero-title span {
+            background: linear-gradient(135deg, #E11D48 0%, #DB2777 50%, #C026D3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(244, 63, 94, 0.2);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
             color: #9D174D;
+            line-height: 1.65;
+            max-width: 540px;
         }
 
-        .sidebar-search {
-            padding: 1rem 1.75rem;
-            border-bottom: 1.5px solid var(--border);
+        @media (max-width: 960px) {
+            .hero-desc {
+                margin: 0 auto;
+            }
         }
 
-        .search-input-box {
+        /* 3D TILTED POSTER DECK IN HERO */
+        .poster-deck-3d {
+            position: relative;
+            height: 380px;
             display: flex;
             align-items: center;
-            background: #FFF5F7;
-            border: 1.5px solid #FBCFE8;
-            border-radius: 9999px;
-            padding: 0.55rem 1rem;
-            gap: 0.5rem;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transform: rotateY(-10deg) rotateX(6deg);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .search-input {
+        .poster-deck-3d:hover {
+            transform: rotateY(-2deg) rotateX(2deg) scale(1.03);
+        }
+
+        .deck-card {
+            position: absolute;
+            width: 140px;
+            height: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(190, 24, 93, 0.18), 0 0 25px rgba(244, 114, 182, 0.35);
+            border: 2px solid #FFFFFF;
+            background: #FFF;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .deck-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .deck-card:hover {
+            transform: translateY(-22px) scale(1.12) !important;
+            z-index: 100 !important;
+            box-shadow: 0 30px 50px rgba(190, 24, 93, 0.3), 0 0 35px rgba(244, 63, 94, 0.6);
+            border-color: #F43F5E;
+        }
+
+        .deck-card.c1 { transform: translateX(-160px) rotateZ(-12deg) translateY(10px); z-index: 1; }
+        .deck-card.c2 { transform: translateX(-80px) rotateZ(-6deg) translateY(5px); z-index: 2; }
+        .deck-card.c3 { transform: translateX(0px) rotateZ(0deg); z-index: 3; border-color: #F43F5E; box-shadow: 0 25px 45px rgba(190, 24, 93, 0.25), 0 0 30px rgba(244, 63, 94, 0.4); }
+        .deck-card.c4 { transform: translateX(80px) rotateZ(6deg) translateY(5px); z-index: 2; }
+        .deck-card.c5 { transform: translateX(160px) rotateZ(12deg) translateY(10px); z-index: 1; }
+
+        /* VIEW SWITCHER & SEARCH TOOLBAR */
+        .controls-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .view-tabs {
+            display: flex;
+            background: #FFFFFF;
+            padding: 0.4rem;
+            border-radius: 9999px;
+            border: 1.5px solid #FBCFE8;
+            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.15);
+            gap: 0.35rem;
+        }
+
+        .view-tab-btn {
+            background: transparent;
+            border: none;
+            color: #9D174D;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.88rem;
+            padding: 0.55rem 1.35rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .view-tab-btn.active {
+            background: linear-gradient(135deg, #F43F5E, #DB2777);
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.35);
+        }
+
+        .search-pill-box {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 1.5px solid #FBCFE8;
+            border-radius: 9999px;
+            padding: 0.6rem 1.35rem;
+            gap: 0.75rem;
+            min-width: 320px;
+            flex: 1;
+            max-width: 480px;
+            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.12);
+            transition: all 0.2s;
+        }
+
+        .search-pill-box:focus-within {
+            border-color: #F43F5E;
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.25);
+        }
+
+        .search-pill-input {
             flex: 1;
             background: transparent;
             border: none;
             outline: none;
             color: #831843;
-            font-size: 0.9rem;
             font-family: var(--font-body);
+            font-size: 0.95rem;
             font-weight: 500;
         }
 
-        .search-input::placeholder {
+        .search-pill-input::placeholder {
             color: #F472B6;
         }
 
-        .topic-list-scroll {
-            flex: 1;
-            overflow-y: auto;
-            padding: 0.85rem;
-        }
-
-        .topic-item {
-            padding: 1rem 1.25rem;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-bottom: 0.4rem;
-            border: 1.5px solid transparent;
+        /* CATEGORY FILTER CAPSULES */
+        .category-capsules {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-bottom: 3rem;
+            justify-content: center;
         }
 
-        .topic-item:hover {
-            background: #FFF0F5;
-        }
-
-        .topic-item.active {
-            background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(236, 72, 153, 0.12));
-            border-color: #F472B6;
-            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
-        }
-
-        .topic-item-left {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .topic-item-code {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: #BE185D;
-            margin-bottom: 0.2rem;
-        }
-
-        .topic-item-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #831843;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .topic-item-count {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #BE185D;
-            background: #FFF0F5;
-            padding: 0.25rem 0.65rem;
+        .capsule-btn {
+            padding: 0.55rem 1.25rem;
             border-radius: 9999px;
-            border: 1px solid #FBCFE8;
-            margin-left: 0.75rem;
+            background: #FFFFFF;
+            border: 1.5px solid #FCE7F3;
+            color: #9D174D;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            box-shadow: 0 2px 8px rgba(244, 114, 182, 0.1);
+            transition: all 0.2s;
         }
 
-        /* RIGHT CANVAS: MOODBOARD & SHOWCASE */
-        .canvas-area {
-            padding: 3.5rem;
-            overflow-y: auto;
-            max-width: 1100px;
+        .capsule-btn:hover {
+            border-color: #F472B6;
+            color: #831843;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(244, 114, 182, 0.2);
         }
 
-        @media (max-width: 600px) {
-            .canvas-area {
-                padding: 1.5rem;
+        .capsule-btn.active {
+            background: linear-gradient(135deg, #F43F5E, #EC4899);
+            border-color: #F43F5E;
+            color: #FFFFFF;
+            box-shadow: 0 4px 18px rgba(244, 63, 94, 0.35);
+        }
+
+        /* EXHIBITS GRID */
+        .exhibits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 500px) {
+            .exhibits-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        .canvas-header {
-            margin-bottom: 2.5rem;
-            border-bottom: 2px dashed #FBCFE8;
-            padding-bottom: 2rem;
+        .exhibit-card {
+            background: #FFFFFF;
+            border: 1.5px solid #FCE7F3;
+            border-radius: 24px;
+            overflow: hidden;
             display: flex;
-            align-items: flex-end;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            box-shadow: 0 10px 25px rgba(244, 114, 182, 0.1);
+        }
+
+        .exhibit-card:hover {
+            transform: translateY(-8px);
+            border-color: #F472B6;
+            box-shadow: 0 20px 40px rgba(244, 63, 94, 0.2), 0 0 25px rgba(251, 207, 232, 0.6);
+        }
+
+        /* POSTER TRIPLE-STAGE BANNER */
+        .exhibit-poster-stage {
+            height: 220px;
+            background: #FFF0F5;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 1rem;
+            cursor: pointer;
+            border-bottom: 1.5px solid #FCE7F3;
+        }
+
+        .stage-thumb {
+            height: 100%;
+            width: 75px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1.5px solid #FFFFFF;
+            box-shadow: 0 8px 18px rgba(190, 24, 93, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .stage-thumb.center {
+            width: 90px;
+            transform: scale(1.08);
+            border-color: #F43F5E;
+            box-shadow: 0 12px 25px rgba(244, 63, 94, 0.35);
+            z-index: 2;
+        }
+
+        .exhibit-card:hover .stage-thumb.center {
+            transform: scale(1.15);
+        }
+
+        .exhibit-body {
+            padding: 1.65rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            flex: 1;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1.5rem;
         }
 
-        .canvas-topic-meta {
+        .exhibit-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+        }
+
+        .exhibit-theme-badge {
             font-weight: 700;
-            color: #BE185D;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            color: #BE185D;
         }
 
-        .canvas-topic-title {
+        .exhibit-title {
             font-family: var(--font-display);
-            font-size: clamp(2.2rem, 4vw, 3.4rem);
-            font-weight: 800;
+            font-size: 1.35rem;
+            font-weight: 700;
             color: #831843;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
+            line-height: 1.25;
         }
 
-        .btn-launch-full {
+        .exhibit-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1.5px dashed #FCE7F3;
+        }
+
+        .btn-launch-stream {
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
             background: linear-gradient(135deg, #F43F5E, #EC4899);
             color: #FFFFFF;
             font-family: var(--font-display);
             font-weight: 800;
-            font-size: 1rem;
-            padding: 0.8rem 1.85rem;
+            font-size: 0.88rem;
+            padding: 0.6rem 1.4rem;
             border-radius: 9999px;
             border: none;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4);
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.35);
         }
 
-        .btn-launch-full:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.55);
+        .btn-launch-stream:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(244, 63, 94, 0.5);
         }
 
-        /* POSTER SHOWCASE CAROUSEL / GRID */
-        .poster-canvas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.75rem;
+        /* VIEW 2: POSTER WALL */
+        .poster-wall-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.25rem;
         }
 
-        .canvas-poster-card {
+        .wall-item {
+            border-radius: 16px;
+            overflow: hidden;
             background: #FFFFFF;
             border: 1.5px solid #FCE7F3;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            box-shadow: 0 8px 20px rgba(244, 114, 182, 0.1);
-        }
-
-        .canvas-poster-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: #F472B6;
-            box-shadow: 0 20px 40px rgba(244, 63, 94, 0.25), 0 0 20px rgba(251, 207, 232, 0.6);
-        }
-
-        .canvas-poster-img-box {
             aspect-ratio: 1 / 3;
-            overflow: hidden;
-            background: #FFF0F5;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 6px 18px rgba(244, 114, 182, 0.12);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .canvas-poster-img-box img {
+        .wall-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
         }
 
-        .canvas-poster-card:hover .canvas-poster-img-box img {
-            transform: scale(1.06);
+        .wall-item:hover {
+            transform: translateY(-8px) scale(1.04);
+            border-color: #F43F5E;
+            box-shadow: 0 20px 35px rgba(244, 63, 94, 0.3);
+            z-index: 10;
         }
 
-        .canvas-poster-info {
-            padding: 1.15rem;
-            background: #FFFFFF;
-            border-top: 1.5px solid #FCE7F3;
-        }
-
-        .canvas-poster-num {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #BE185D;
+        .wall-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(131, 24, 67, 0.95) 45%);
+            padding: 1.5rem 0.75rem 0.75rem;
+            color: #FFFFFF;
+            font-size: 0.78rem;
             font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.2s;
         }
 
-        .canvas-poster-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #831843;
-            margin-top: 0.25rem;
-            line-height: 1.35;
+        .wall-item:hover .wall-caption {
+            opacity: 1;
         }
 
-        /* READER VIEW */
+        /* ========================================================
+           READER VIEW (DOOM-SCROLL WITH IDENTICAL AUTO-HIDE NAV)
+           ======================================================== */
         #readerView {
             display: none;
             width: 100%;
@@ -563,43 +721,52 @@
 </head>
 <body class="view-home">
     <div id="homeView">
-        <div class="studio-layout">
-            <!-- SIDEBAR: TOPIC EXPLORER -->
-            <aside class="sidebar">
-                <div class="sidebar-header">
-                    <div class="brand-badge">💖 PINK STUDIO • EDITION 2026 🌸</div>
-                    <h1 class="brand-title">Computer Science</h1>
-                    <p class="brand-sub">Pilih topik di bawah untuk melihat moodboard visual imut.</p>
+        <div class="container">
+            <!-- 3D SPATIAL HERO -->
+            <section class="spatial-hero">
+                <div class="hero-left">
+                    <div class="hero-badge">
+                        <span>🌸 839 INFOGRAPHICS • CUTE PINK EDITION 💖</span>
+                    </div>
+                    <h1 class="hero-title">Museum of <span>Computing</span> &amp; AI</h1>
+                    <p class="hero-desc">
+                        Penjelajahan visual manis &amp; estetik untuk 839 materi sains komputer, kecerdasan buatan, arsitektur data, dan keamanan siber.
+                    </p>
                 </div>
 
-                <div class="sidebar-search">
-                    <div class="search-input-box">
-                        <span>🌸</span>
-                        <input type="text" id="sidebarSearch" class="search-input" placeholder="Cari topik atau materi...">
-                    </div>
-                </div>
+                <!-- 3D POSTER DECK -->
+                <div class="poster-deck-3d" id="heroPosterDeck"></div>
+            </section>
 
-                <div class="topic-list-scroll" id="topicListScroll"></div>
-            </aside>
-
-            <!-- RIGHT CANVAS -->
-            <main class="canvas-area">
-                <div class="canvas-header">
-                    <div>
-                        <div class="canvas-topic-meta" id="canvasMeta">E1-01 • HISTORY OF COMPUTING</div>
-                        <h2 class="canvas-topic-title" id="canvasTitle">History of Computing</h2>
-                    </div>
-                    <button type="button" class="btn-launch-full" id="btnLaunchCanvasStream">
-                        <span>Buka Stream 💖</span>
+            <!-- TOOLBAR: VIEW SWITCHER & SEARCH -->
+            <div class="controls-toolbar">
+                <div class="view-tabs">
+                    <button type="button" class="view-tab-btn active" id="tabExhibits" onclick="switchView('exhibits');">
+                        <span>🌸 Visual Exhibits (31)</span>
+                    </button>
+                    <button type="button" class="view-tab-btn" id="tabWall" onclick="switchView('wall');">
+                        <span>🎀 Poster Wall (839)</span>
                     </button>
                 </div>
 
-                <div class="poster-canvas-grid" id="posterCanvasGrid"></div>
-            </main>
+                <div class="search-pill-box">
+                    <span>💖</span>
+                    <input type="text" id="matrixSearchInput" class="search-pill-input" placeholder="Cari materi, algoritma, atau konsep imut...">
+                </div>
+            </div>
+
+            <!-- CATEGORY CAPSULES -->
+            <div class="category-capsules" id="categoryCapsules"></div>
+
+            <!-- VIEW 1: EXHIBIT SHOWCASE -->
+            <main class="exhibits-grid" id="exhibitsGrid"></main>
+
+            <!-- VIEW 2: POSTER WALL -->
+            <main class="poster-wall-grid" id="posterWallGrid"></main>
         </div>
     </div>
 
-    <!-- READER -->
+    <!-- READER VIEW -->
     <div id="readerView">
         <nav class="reader-nav" id="readerNav" onclick="event.stopPropagation();">
             <button type="button" class="nav-back-btn" onclick="closeReader();">
@@ -632,21 +799,27 @@
         </div>
     </div>
 
-    <script src="data.js"></script>
+    <script src="../data.js"></script>
     <script>
-        const libraryData = window.libraryData || [];
+        const libraryData = (window.libraryData || []).map(f => {
+            if (f && f.images) {
+                f.images.forEach(img => {
+                    if (img && img.url && !img.url.startsWith('../')) img.url = '../' + img.url;
+                });
+            }
+            return f;
+        });
 
         const folderMap = {};
         libraryData.forEach(f => { folderMap[f.rawName] = f; });
 
         const homeView = document.getElementById('homeView');
         const readerView = document.getElementById('readerView');
-        const topicListScroll = document.getElementById('topicListScroll');
-        const sidebarSearch = document.getElementById('sidebarSearch');
-        const canvasMeta = document.getElementById('canvasMeta');
-        const canvasTitle = document.getElementById('canvasTitle');
-        const btnLaunchCanvasStream = document.getElementById('btnLaunchCanvasStream');
-        const posterCanvasGrid = document.getElementById('posterCanvasGrid');
+        const heroPosterDeck = document.getElementById('heroPosterDeck');
+        const exhibitsGrid = document.getElementById('exhibitsGrid');
+        const posterWallGrid = document.getElementById('posterWallGrid');
+        const categoryCapsules = document.getElementById('categoryCapsules');
+        const matrixSearchInput = document.getElementById('matrixSearchInput');
         const doomFeed = document.getElementById('doomFeed');
         const nav = document.getElementById('readerNav');
         const navFolderTitle = document.getElementById('navFolderTitle');
@@ -657,8 +830,9 @@
         const pickerTotalBadge = document.getElementById('pickerTotalBadge');
 
         let currentActiveFolder = null;
-        let selectedFolder = libraryData[0];
         let homeScrollY = 0;
+        let currentView = 'exhibits';
+        let selectedCategory = '';
 
         function showNav() { nav.classList.remove('nav-hidden'); }
         function hideNav() { 
@@ -702,62 +876,118 @@
         }
 
         function init() {
-            renderSidebar();
-            selectTopic(libraryData[0].rawName);
+            const samplePosters = [
+                libraryData[0]?.images[0],
+                libraryData[7]?.images[0],
+                libraryData[14]?.images[0],
+                libraryData[20]?.images[0],
+                libraryData[26]?.images[0],
+            ].filter(Boolean);
 
-            sidebarSearch.addEventListener('input', renderSidebar);
-            btnLaunchCanvasStream.addEventListener('click', () => {
-                if (selectedFolder) openReader(selectedFolder.rawName);
+            let deckHtml = '';
+            samplePosters.forEach((p, idx) => {
+                const parentFolder = libraryData.find(f => f.images.some(img => img.url === p.url));
+                deckHtml += `
+                    <div class="deck-card c${idx + 1}" onclick="openReader('${parentFolder.rawName}');">
+                        <img src="${p.url}" alt="${p.cleanTitle}">
+                    </div>
+                `;
             });
+            heroPosterDeck.innerHTML = deckHtml;
+
+            const codes = [...new Set(libraryData.map(f => f.themeCode))];
+            let capHtml = `<button class="capsule-btn active" data-theme="">✨ Semua (${libraryData.length})</button>`;
+            codes.forEach(c => {
+                const sample = libraryData.find(f => f.themeCode === c);
+                capHtml += `<button class="capsule-btn" data-theme="${c}">${sample.theme.icon} ${sample.themeShortTitle}</button>`;
+            });
+            categoryCapsules.innerHTML = capHtml;
+
+            categoryCapsules.querySelectorAll('.capsule-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryCapsules.querySelectorAll('.capsule-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedCategory = btn.dataset.theme || '';
+                    renderExhibits();
+                    renderPosterWall();
+                });
+            });
+
+            matrixSearchInput.addEventListener('input', () => {
+                renderExhibits();
+                renderPosterWall();
+            });
+
+            renderExhibits();
+            renderPosterWall();
         }
 
-        function renderSidebar() {
-            const q = sidebarSearch.value.trim().toLowerCase();
+        function renderExhibits() {
+            const q = matrixSearchInput.value.trim().toLowerCase();
             let html = '';
             libraryData.forEach(f => {
+                if (selectedCategory && f.themeCode !== selectedCategory) return;
                 if (q && !f.displayName.toLowerCase().includes(q) && !f.images.some(img => img.cleanTitle.toLowerCase().includes(q))) return;
-                const isActive = selectedFolder && selectedFolder.rawName === f.rawName;
+
+                const img1 = f.images[0]?.url || '';
+                const img2 = f.images[1]?.url || img1;
+                const img3 = f.images[2]?.url || img1;
+
                 html += `
-                    <div class="topic-item ${isActive ? 'active' : ''}" onclick="selectTopic('${f.rawName}');">
-                        <div class="topic-item-left">
-                            <div class="topic-item-code">${f.code} • ${f.themeShortTitle}</div>
-                            <div class="topic-item-title">${escapeHtml(f.displayName)}</div>
+                    <article class="exhibit-card">
+                        <div class="exhibit-poster-stage" onclick="openReader('${f.rawName}');">
+                            <img class="stage-thumb" src="${img1}" alt="Poster" loading="lazy">
+                            <img class="stage-thumb center" src="${img2}" alt="Poster" loading="lazy">
+                            <img class="stage-thumb" src="${img3}" alt="Poster" loading="lazy">
                         </div>
-                        <span class="topic-item-count">${f.imageCount}</span>
-                    </div>
+                        <div class="exhibit-body">
+                            <div>
+                                <div class="exhibit-meta-row">
+                                    <span class="exhibit-theme-badge">${f.code} • ${f.themeShortTitle}</span>
+                                    <span style="color: #BE185D; font-weight:700;">#${f.number}</span>
+                                </div>
+                                <h2 class="exhibit-title">${escapeHtml(f.displayName)}</h2>
+                            </div>
+                            <div class="exhibit-footer">
+                                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #9D174D; font-weight:600;">${f.imageCount} Visual Posters</span>
+                                <button type="button" class="btn-launch-stream" onclick="openReader('${f.rawName}');">
+                                    <span>Buka Stream 🌸</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
                 `;
             });
-            topicListScroll.innerHTML = html;
+            exhibitsGrid.innerHTML = html || '<div style="padding:3rem; text-align:center; color:#9D174D;">Tidak ada hasil ditemukan.</div>';
         }
 
-        function selectTopic(rawName) {
-            const f = folderMap[rawName];
-            if (!f) return;
-            selectedFolder = f;
-
-            document.querySelectorAll('.topic-item').forEach(it => {
-                it.classList.remove('active');
-            });
-            renderSidebar();
-
-            canvasMeta.textContent = `${f.code} • ${f.themeTitle.toUpperCase()}`;
-            canvasTitle.textContent = f.displayName;
-
-            let postersHtml = '';
-            f.images.forEach((img, i) => {
-                postersHtml += `
-                    <div class="canvas-poster-card" onclick="openReader('${f.rawName}', ${i + 1});">
-                        <div class="canvas-poster-img-box">
-                            <img src="${img.url}" alt="${escapeHtml(img.cleanTitle)}" loading="lazy" decoding="async">
+        function renderPosterWall() {
+            const q = matrixSearchInput.value.trim().toLowerCase();
+            let html = '';
+            libraryData.forEach(f => {
+                if (selectedCategory && f.themeCode !== selectedCategory) return;
+                f.images.forEach((img, i) => {
+                    if (q && !img.cleanTitle.toLowerCase().includes(q) && !f.displayName.toLowerCase().includes(q)) return;
+                    html += `
+                        <div class="wall-item" onclick="openReader('${f.rawName}', ${i + 1});">
+                            <img src="${img.url}" alt="${escapeHtml(img.cleanTitle)}" loading="lazy">
+                            <div class="wall-caption">
+                                <div>${escapeHtml(img.cleanTitle)}</div>
+                                <div style="font-size:0.68rem; color:#FB7185; font-family:var(--font-mono);">${f.code} #${i + 1}</div>
+                            </div>
                         </div>
-                        <div class="canvas-poster-info">
-                            <div class="canvas-poster-num">#${i + 1}</div>
-                            <div class="canvas-poster-title">${escapeHtml(img.cleanTitle)}</div>
-                        </div>
-                    </div>
-                `;
+                    `;
+                });
             });
-            posterCanvasGrid.innerHTML = postersHtml;
+            posterWallGrid.innerHTML = html;
+        }
+
+        function switchView(mode) {
+            currentView = mode;
+            document.getElementById('tabExhibits').classList.toggle('active', mode === 'exhibits');
+            document.getElementById('tabWall').classList.toggle('active', mode === 'wall');
+            exhibitsGrid.style.display = mode === 'exhibits' ? 'grid' : 'none';
+            posterWallGrid.style.display = mode === 'wall' ? 'grid' : 'none';
         }
 
         // Independent Position Store per Folder (LocalStorage)

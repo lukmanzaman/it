@@ -632,9 +632,16 @@
         </div>
     </div>
 
-    <script src="data.js"></script>
+    <script src="../data.js"></script>
     <script>
-        const libraryData = window.libraryData || [];
+        const libraryData = (window.libraryData || []).map(f => {
+            if (f && f.images) {
+                f.images.forEach(img => {
+                    if (img && img.url && !img.url.startsWith('../')) img.url = '../' + img.url;
+                });
+            }
+            return f;
+        });
 
         const folderMap = {};
         libraryData.forEach(f => { folderMap[f.rawName] = f; });
