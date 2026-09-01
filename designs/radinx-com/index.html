@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>RadinX 🐰 • Rumah Cerita, Poster Visual, &amp; Proyek Kreatif</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="RadinX 🐰 • Rumah Cerita, Poster Visual, &amp; Proyek Kreatif">
+    <meta name="description" content="Koleksi karya kreatif, 2 buku teks akademis (S1 DKV p5.js &amp; S3 Filsafat Ilmu), 3 full novel sastra AI (1.276 hlm), 839+ poster VIS Sains Komputer &amp; AI, 999+ poster infografis 4K, Humor dalam Foto, 1.161 konsep visual marketing, 1.500+ materi bisnis &amp; keuangan, Pigura Pikiran 100 eksperimen filsafat, Sejuta Cerita, dan Human-Centric AI Manifesto sebagai demo bagi Institut STTS sebagai AI Campus.">
+    <meta name="keywords" content="radinx, institut stts, istts, ai campus, vis sains komputer, museum computing, seni generatif, estetika komputasi, p5js, falsafah ilmu pengetahuan, metodologi riset s3, design science research, novel ai, delapan pulau, langit berganti nama, lumpur mengingat, sejuta cerita, humor dalam foto, pantun humor, cerita slideshow, poster sains, vis marketing, vis bisnis, filsafat babi, pigura pikiran, human-centric ai manifesto, infografis 4k">
+    <meta name="author" content="Institut STTS">
+    <meta name="theme-color" content="#FFF1F2">
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://radinx.com/">
+    <meta property="og:title" content="RadinX 🐰 • Rumah Cerita, Poster Visual, &amp; Proyek Kreatif">
+    <meta property="og:description" content="Jelajahi 2 buku teks akademis AI (S1 &amp; S3), 3 full novel sastra AI, 839+ poster VIS Sains Komputer &amp; AI, 999+ poster visual 4K, Humor dalam Foto, 1.161 materi marketing, 1.500+ materi bisnis, 100 eksperimen filsafat Pigura Pikiran, Sejuta Cerita, dan Human-Centric AI Manifesto sebagai demo bagi Institut STTS sebagai AI Campus.">
+    <meta property="og:image" content="https://radinx.com/image.jpg">
+    <meta property="og:site_name" content="RadinX">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Card / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://radinx.com/">
+    <meta name="twitter:title" content="RadinX 🐰 • Rumah Cerita, Poster Visual, &amp; Proyek Kreatif">
+    <meta name="twitter:description" content="Jelajahi 2 buku teks akademis AI (S1 &amp; S3), 3 full novel sastra AI, 839+ poster VIS Sains Komputer &amp; AI, 999+ poster visual 4K, Humor dalam Foto, 1.161 materi marketing, 1.500+ materi bisnis, 100 eksperimen filsafat Pigura Pikiran, Sejuta Cerita, dan Human-Centric AI Manifesto sebagai demo bagi Institut STTS sebagai AI Campus.">
+    <meta name="twitter:image" content="https://radinx.com/image.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================================
+           WARM, COZY, & CUTE DESIGN SYSTEM (LIGHT & DARK THEMES)
+           ======================================================== */
+        :root[data-theme="light"] {
+            --bg-body: #FFF9FA;
+            --bg-body-gradient: radial-gradient(circle at 10% 20%, #FFF1F5 0%, #FFFDF9 50%, #F0F9FF 100%);
+            --card-bg: #FFFFFF;
+            --card-hover: #FFFFFF;
+            --border-card: #FEE2E8;
+            --border-soft: #F1F5F9;
+            
+            --text-title: #1E293B;
+            --text-body: #475569;
+            --text-muted: #8492A6;
+            
+            --accent-pink: #FB7185;
+            --accent-pink-bg: #FFF1F2;
+            --accent-pink-border: #FECDD3;
+            
+            --accent-blue: #0284C7;
+            --accent-blue-bg: #E0F2FE;
+            
+            --accent-purple: #8B5CF6;
+            --accent-purple-bg: #F3E8FF;
+            --accent-purple-border: #DDD6FE;
+            
+            --accent-amber: #D97706;
+            --accent-amber-bg: #FEF3C7;
+            
+            --accent-emerald: #059669;
+            --accent-emerald-bg: #D1FAE5;
+            
+            --shadow-card: 0 4px 20px rgba(251, 113, 133, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
+            --shadow-hover: 0 16px 36px rgba(244, 63, 94, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04);
+            
+            --mascot-bubble-bg: #FFFFFF;
+            --mascot-bubble-border: #FCE7F3;
+            
+            --manifesto-bg: linear-gradient(135deg, #FAF5FF 0%, #FFF1F2 50%, #EFF6FF 100%);
+            --manifesto-border: #E9D5FF;
+            --manifesto-pill-bg: #FFFFFF;
+        }
+
+        :root[data-theme="dark"] {
+            --bg-body: #11131B;
+            --bg-body-gradient: radial-gradient(circle at 10% 20%, #1A1320 0%, #11131B 60%, #101622 100%);
+            --card-bg: #1A1D27;
+            --card-hover: #202431;
+            --border-card: #2B2F3E;
+            --border-soft: rgba(255, 255, 255, 0.08);
+            
+            --text-title: #F8FAFC;
+            --text-body: #CBD5E1;
+            --text-muted: #94A3B8;
+            
+            --accent-pink: #FB7185;
+            --accent-pink-bg: rgba(244, 63, 94, 0.15);
+            --accent-pink-border: rgba(244, 63, 94, 0.35);
+            
+            --accent-blue: #38BDF8;
+            --accent-blue-bg: rgba(56, 189, 248, 0.15);
+            
+            --accent-purple: #C084FC;
+            --accent-purple-bg: rgba(192, 132, 252, 0.15);
+            --accent-purple-border: rgba(192, 132, 252, 0.35);
+            
+            --accent-amber: #FBBF24;
+            --accent-amber-bg: rgba(251, 191, 36, 0.15);
+            
+            --accent-emerald: #34D399;
+            --accent-emerald-bg: rgba(52, 211, 153, 0.15);
+            
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(251, 113, 133, 0.15);
+            
+            --mascot-bubble-bg: #1A1D27;
+            --mascot-bubble-border: #2B2F3E;
+            
+            --manifesto-bg: linear-gradient(135deg, #1C1528 0%, #201622 50%, #151A2C 100%);
+            --manifesto-border: #4C2D6B;
+            --manifesto-pill-bg: #161822;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-body);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-body-gradient);
+            color: var(--text-body);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* HEADER */
+        header.cute-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 249, 250, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-card);
+            padding: 0.75rem 0;
+            transition: all 0.3s ease;
+        }
+
+        :root[data-theme="dark"] header.cute-header {
+            background: rgba(17, 19, 27, 0.88);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+            border: 2px solid var(--accent-pink-border);
+            background: #fff;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .brand-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand-box:hover .brand-avatar {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .brand-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.15;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .brand-subtitle {
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--accent-pink);
+            letter-spacing: 0.02em;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .btn-theme {
+            background: var(--card-bg);
+            border: 1px solid var(--border-card);
+            color: var(--text-title);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.05rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        .btn-theme:hover {
+            transform: scale(1.08) rotate(15deg);
+            border-color: var(--accent-pink);
+        }
+
+        .btn-random {
+            background: var(--accent-pink-bg);
+            border: 1px solid var(--accent-pink-border);
+            color: var(--accent-pink);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.45rem 0.95rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-random:hover {
+            background: var(--accent-pink);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(244, 63, 94, 0.3);
+        }
+
+        /* HERO & MASCOT WELCOME */
+        .hero-banner {
+            padding: 3rem 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.2rem;
+            flex-wrap: wrap;
+        }
+
+        .mascot-wrap {
+            position: relative;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .mascot-img-container {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 6px;
+            box-shadow: 0 12px 32px rgba(244, 63, 94, 0.18);
+            border: 3px solid var(--accent-pink-border);
+            display: inline-block;
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+
+        .mascot-img-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .mascot-badge {
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-pink);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.2rem 0.75rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
+            white-space: nowrap;
+            letter-spacing: 0.04em;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .welcome-bubble {
+            background: var(--mascot-bubble-bg);
+            border: 2px solid var(--mascot-bubble-border);
+            border-radius: 24px;
+            padding: 1.6rem 2rem;
+            max-width: 580px;
+            box-shadow: var(--shadow-card);
+            position: relative;
+        }
+
+        .welcome-bubble::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 40px;
+            width: 20px;
+            height: 20px;
+            background: var(--mascot-bubble-bg);
+            border-left: 2px solid var(--mascot-bubble-border);
+            border-bottom: 2px solid var(--mascot-bubble-border);
+            transform: rotate(45deg);
+        }
+
+        @media (max-width: 768px) {
+            .welcome-bubble::before {
+                display: none;
+            }
+            .hero-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+        }
+
+        .bubble-greeting {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.25;
+            margin-bottom: 0.5rem;
+        }
+
+        .bubble-text {
+            font-size: 0.94rem;
+            color: var(--text-body);
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
+        .bubble-text a {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1.5px dotted var(--accent-pink);
+            transition: all 0.2s ease;
+        }
+
+        .bubble-text a:hover {
+            color: var(--text-title);
+            border-bottom-style: solid;
+        }
+
+        .quick-stats-pills {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+            background: var(--accent-pink-bg);
+            color: var(--accent-pink);
+            border: 1px solid var(--accent-pink-border);
+        }
+
+        /* CONTROLS (TABS & SEARCH) */
+        .controls-wrapper {
+            margin: 1rem 0 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .category-tabs {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-card);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.45rem 0.95rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: inherit;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .tab-btn:hover {
+            color: var(--text-title);
+            border-color: var(--accent-pink-border);
+            transform: translateY(-1px);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-pink);
+            color: #ffffff;
+            border-color: var(--accent-pink);
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 240px;
+            flex: 1;
+            max-width: 320px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-card);
+            border-radius: 9999px;
+            padding: 0.5rem 1rem 0.5rem 2.2rem;
+            font-size: 0.85rem;
+            color: var(--text-title);
+            outline: none;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            font-size: 0.85rem;
+        }
+
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+        }
+
+        .item-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border-color, var(--border-card));
+            border-radius: 20px;
+            padding: 1.6rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: var(--shadow-card);
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--card-theme-color, var(--accent-pink));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .card-link:hover .item-card {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--card-theme-color, var(--accent-pink));
+            background: var(--card-hover);
+        }
+
+        .card-top-content {
+            margin-bottom: 1.25rem;
+        }
+
+        .card-badge-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .card-icon-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: var(--card-theme-bg, var(--accent-pink-bg));
+            color: var(--card-theme-color, var(--accent-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            transition: transform 0.2s ease;
+        }
+
+        .card-link:hover .card-icon-circle {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .badge-cat {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.22rem 0.65rem;
+            border-radius: 9999px;
+            background: var(--card-theme-bg, var(--accent-pink-bg));
+            color: var(--card-theme-color, var(--accent-pink));
+            letter-spacing: 0.03em;
+        }
+
+        .card-heading {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.22rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.3;
+            margin-bottom: 0.45rem;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-body);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tag-list {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .mini-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            background: var(--border-soft);
+            color: var(--text-muted);
+            padding: 0.15rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .card-bottom-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            border-top: 1px solid var(--border-soft);
+            padding-top: 0.9rem;
+            margin-top: auto;
+            min-width: 0;
+        }
+
+        .card-url-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .card-btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--card-theme-color, var(--accent-pink));
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .card-link:hover .card-btn-action {
+            transform: translateX(4px);
+        }
+
+        /* ========================================================
+           GRAND FINALE: THE HUMAN-CENTRIC AI MANIFESTO (PROMINENT)
+           ======================================================== */
+        .manifesto-master-box {
+            background: var(--manifesto-bg);
+            border: 3px solid var(--manifesto-border);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 16px 40px rgba(139, 92, 246, 0.12), var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manifesto-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.95rem;
+            border-radius: 9999px;
+            background: var(--accent-purple);
+            color: #ffffff;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.35);
+            margin-bottom: 1.25rem;
+        }
+
+        .manifesto-headline {
+            font-family: 'Quicksand', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .manifesto-main-quote {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-body);
+            max-width: 860px;
+            margin-bottom: 2rem;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .manifesto-pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .manifesto-pillar-item {
+            background: var(--manifesto-pill-bg);
+            border: 1px solid var(--manifesto-border);
+            border-radius: 18px;
+            padding: 1.35rem 1.25rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .pillar-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pillar-title {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--text-title);
+        }
+
+        .pillar-desc {
+            font-size: 0.84rem;
+            color: var(--text-body);
+            line-height: 1.55;
+        }
+
+        .manifesto-cta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--manifesto-border);
+            padding-top: 1.75rem;
+        }
+
+        .manifesto-action-text {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .btn-manifesto-large {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 50%, #EC4899 100%);
+            color: #ffffff;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            padding: 0.85rem 1.85rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .btn-manifesto-large:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.5);
+            color: #ffffff;
+        }
+
+        /* FOOTER */
+        footer.cute-footer {
+            border-top: 1px solid var(--border-card);
+            padding: 3.5rem 0 2.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-bunny {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+
+        .footer-quote {
+            max-width: 540px;
+            margin: 0.4rem auto 1.5rem;
+            font-size: 0.92rem;
+            color: var(--text-body);
+            font-style: italic;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 600;
+            font-size: 0.84rem;
+            transition: color 0.15s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-pink);
+        }
+
+        .footer-copyright {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .footer-copyright a {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        .footer-copyright a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SITE HEADER -->
+    <header class="cute-header">
+        <div class="container header-content">
+            <a href="#" class="brand-box">
+                <div class="brand-avatar">
+                    <img src="favicon.png" alt="RadinX Bunny Logo">
+                </div>
+                <div class="brand-info">
+                    <span class="brand-title">RadinX <span style="font-size: 1rem;">🐰</span></span>
+                    <span class="brand-subtitle">Rumah Ide &amp; Proyek Kreatif</span>
+                </div>
+            </a>
+
+            <div class="header-actions">
+                <button type="button" class="btn-random" onclick="openRandomCard();" title="Buka Halaman Acak">
+                    <span>🎲</span> <span>Buka Acak</span>
+                </button>
+                <button type="button" class="btn-theme" id="themeToggleBtn" onclick="toggleTheme();" title="Ganti Mode Terang / Gelap">
+                    <span id="themeIcon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+
+        <!-- HERO MASCOT & WARM GREETING -->
+        <section class="hero-banner">
+            <div class="mascot-wrap">
+                <div class="mascot-img-container">
+                    <img src="favicon.png" alt="Mascot Kelinci RadinX">
+                </div>
+                <span class="mascot-badge">RADINX 💖 TECH</span>
+            </div>
+
+            <div class="welcome-bubble">
+                <h1 class="bubble-greeting">Halo, selamat datang! ✨</h1>
+                <p class="bubble-text">
+                    Ini adalah rumah kecil untuk kumpulan proyek, poster infografis edukasi 4K, fiksi dan cerita pendek, konsep marketing, serta catatan pemikiran sebagai demo bagi <a href="https://istts.ac.id/" target="_blank"><strong>Institut STTS</strong></a> sebagai AI Campus. Semuanya bebas dijelajahi dan dinikmati dengan santai!
+                </p>
+                <div class="quick-stats-pills">
+                    <span class="stat-pill">📖 2 Buku Teks Akademis AI</span>
+                    <span class="stat-pill">📚 3 Full Novel Sastra AI</span>
+                    <span class="stat-pill">💻 839+ VIS Sains Komputer &amp; AI</span>
+                    <span class="stat-pill">🎨 999+ Poster Sains &amp; Sejarah</span>
+                    <span class="stat-pill">📸 Humor dalam Foto</span>
+                    <span class="stat-pill">📈 1.161 Visual Marketing</span>
+                    <span class="stat-pill">💼 1.500+ Bisnis &amp; Finansial</span>
+                    <span class="stat-pill">🏛️ 100 Eksperimen Filsafat</span>
+                    <span class="stat-pill">🌗 Sejuta Cerita</span>
+                    <span class="stat-pill">⚡ Human-Centric AI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FILTER TABS & LIVE SEARCH -->
+        <section class="controls-wrapper">
+            <div class="category-tabs" id="categoryTabs">
+                <button type="button" class="tab-btn active" data-filter="all">🌸 Semua Proyek (16)</button>
+                <button type="button" class="tab-btn" data-filter="poster">🎨 Poster &amp; Infografis</button>
+                <button type="button" class="tab-btn" data-filter="marketing">💼 Bisnis &amp; Marketing</button>
+                <button type="button" class="tab-btn" data-filter="cerita">🌗 Cerita &amp; Sastra</button>
+                <button type="button" class="tab-btn" data-filter="esai">✍️ Esai &amp; Edukasi</button>
+            </div>
+
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="projectSearch" placeholder="Cari topik atau nama proyek..." autocomplete="off" oninput="filterCards()">
+            </div>
+        </section>
+
+        <!-- PROJECT CARDS GRID -->
+        <section class="cards-grid" id="cardsGrid">
+            
+            <!-- Sejuta Cerita 🌙 -->
+            <a href="https://sejutacerita.com/" target="_blank" class="card-link" data-category="cerita" style="--card-theme-color: #FB7185; --card-theme-bg: #FFF1F2; --card-border-color: #FECDD3;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">🌗</div>
+                            <span class="badge-cat">Sastra & Cerita</span>
+                        </div>
+                        <h2 class="card-heading">Sejuta Cerita 🌙</h2>
+                        <p class="card-desc">
+                            Ruang membaca narasi sastra, cerpen humor, fiksi kontemporer, dan cerita kehidupan yang hangat dan menyentuh rasa.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Cerita Pendek</span><span class="mini-tag">Sastra Digital</span><span class="mini-tag">Fiksi Hangat</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">sejutacerita.com</span>
+                        <span class="card-btn-action">Mulai Baca ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Humor dalam Foto 📸🎭 -->
+            <a href="https://sejutakomik.com/" target="_blank" class="card-link" data-category="cerita poster" style="--card-theme-color: #EA580C; --card-theme-bg: #FFF7ED; --card-border-color: #FED7AA;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">📸</div>
+                            <span class="badge-cat">Cerita Humor & Slideshow Foto</span>
+                        </div>
+                        <h2 class="card-heading">Humor dalam Foto 📸🎭</h2>
+                        <p class="card-desc">
+                            Koleksi cerita humor pendek sinematik berformat slideshow foto layar penuh (16:9), di mana tiap slide memadukan fotografi ekspresif dengan bait-bait pantun & rima naratif yang jenaka.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Slideshow Foto 16:9</span><span class="mini-tag">Cerita Humor Berima</span><span class="mini-tag">Foto Narasi Sinematik</span><span class="mini-tag">Fullscreen Viewer</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">sejutakomik.com</span>
+                        <span class="card-btn-action">Buka Slideshow ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Koleksi Poster & Infografis HD -->
+            <a href="https://radinx.com/poster/" target="_blank" class="card-link" data-category="poster" style="--card-theme-color: #0284C7; --card-theme-bg: #E0F2FE; --card-border-color: #BAE6FD;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">🎨</div>
+                            <span class="badge-cat">Visual Infografis</span>
+                        </div>
+                        <h2 class="card-heading">Koleksi Poster & Infografis HD</h2>
+                        <p class="card-desc">
+                            Galeri Productive Doomscroll berisi 999+ poster visual 4K bertema sains semesta, sejarah dunia, tokoh penemu, biologi, dan artefak purba.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">999 Poster</span><span class="mini-tag">4K HD</span><span class="mini-tag">Vertical Stream</span><span class="mini-tag">Sains & Sejarah</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">radinx.com/poster</span>
+                        <span class="card-btn-action">Buka Galeri ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- 1000+ Materi VIS Marketing -->
+            <a href="https://lukmanzaman.github.io/marketing" target="_blank" class="card-link" data-category="marketing" style="--card-theme-color: #2563EB; --card-theme-bg: #EFF6FF; --card-border-color: #BFDBFE;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">📈</div>
+                            <span class="badge-cat">Marketing & Bisnis</span>
+                        </div>
+                        <h2 class="card-heading">1000+ Materi VIS Marketing</h2>
+                        <p class="card-desc">
+                            Eksplorasi visual 14 kategori strategi marketing, psikologi bias kognitif konsumen, framework bisnis (Ansoff, BCG, AIDA), copywriting, & metrik growth.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">1.161 Konsep</span><span class="mini-tag">14 Kategori</span><span class="mini-tag">Bias Kognitif</span><span class="mini-tag">Business Framework</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">lukmanzaman.github.io/marketing</span>
+                        <span class="card-btn-action">Eksplor Materi ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- 1500+ Materi VIS Bisnis & Keuangan -->
+            <a href="https://lukmanzaman.github.io/bisnis" target="_blank" class="card-link" data-category="marketing" style="--card-theme-color: #0D9488; --card-theme-bg: #F0FDFA; --card-border-color: #99F6E4;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">💼</div>
+                            <span class="badge-cat">Bisnis & Keuangan</span>
+                        </div>
+                        <h2 class="card-heading">1500+ Materi VIS Bisnis & Keuangan</h2>
+                        <p class="card-desc">
+                            Eksplorasi visual 1.500+ konsep finansial, investasi, valuasi bisnis, ekonomi makro/mikro, kepemimpinan, dan strategi korporasi dalam format continuous vertical stream.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">1.500+ Konsep</span><span class="mini-tag">Investasi & Saham</span><span class="mini-tag">Valuasi Finansial</span><span class="mini-tag">Strategi Bisnis</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">lukmanzaman.github.io/bisnis</span>
+                        <span class="card-btn-action">Eksplor Materi ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- 839+ Materi VIS Computer Science & Tech -->
+            <a href="https://lukmanzaman.github.io/it/" target="_blank" class="card-link" data-category="poster esai" style="--card-theme-color: #2563EB; --card-theme-bg: #EFF6FF; --card-border-color: #BFDBFE;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">💻</div>
+                            <span class="badge-cat">Sains Komputer &amp; AI</span>
+                        </div>
+                        <h2 class="card-heading">839+ VIS Computer Science &amp; Tech 💻⚡</h2>
+                        <p class="card-desc">
+                            Museum visual &amp; continuous stream 839 konsep kanonik: sejarah komputasi, algoritma, arsitektur neural network, keamanan siber, dan teknologi antariksa.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">839 Infografis 4K</span><span class="mini-tag">31 Topik Kanonik</span><span class="mini-tag">Sejarah Komputer</span><span class="mini-tag">AI &amp; Neural Nets</span><span class="mini-tag">Cybersecurity</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">lukmanzaman.github.io/it</span>
+                        <span class="card-btn-action">Jelajahi Museum ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Kumpulan Artikel & Esai -->
+            <a href="https://radinx.com/artikel/" target="_blank" class="card-link" data-category="esai" style="--card-theme-color: #D97706; --card-theme-bg: #FEF3C7; --card-border-color: #FDE68A;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">✍️</div>
+                            <span class="badge-cat">Esai & Pemikiran</span>
+                        </div>
+                        <h2 class="card-heading">Kumpulan Artikel & Esai</h2>
+                        <p class="card-desc">
+                            Catatan pemikiran mendalam, esai reflektif mengenai budaya digital, psikologi visual, dan sudut pandang bernalar kritis.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Esai Reflektif</span><span class="mini-tag">Kultur Digital</span><span class="mini-tag">Catatan Ide</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">radinx.com/artikel</span>
+                        <span class="card-btn-action">Baca Artikel ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Pigura Pikiran • 100 Eksperimen Filsafat -->
+            <a href="https://lukmanzaman.github.io/filsafat-babi/" target="_blank" class="card-link" data-category="esai cerita" style="--card-theme-color: #8B5CF6; --card-theme-bg: #F5F3FF; --card-border-color: #DDD6FE;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">🏛️</div>
+                            <span class="badge-cat">Filsafat & Narasi</span>
+                        </div>
+                        <h2 class="card-heading">Pigura Pikiran • 100 Eksperimen Filsafat</h2>
+                        <p class="card-desc">
+                            Antologi interaktif 100 eksperimen pemikiran filosofis kanonik dunia yang dikemas dalam narasi sastrawi, simulasi keputusan bercabang (fork decision), dan dialektika kritis.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">100 Eksperimen</span><span class="mini-tag">Filsafat Interaktif</span><span class="mini-tag">Fork Simulator</span><span class="mini-tag">Dialektika Nalar</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">lukmanzaman.github.io/filsafat-babi</span>
+                        <span class="card-btn-action">Mulai Eksplorasi ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Koleksi Flash Fictions -->
+            <a href="https://radinx.com/flash/" target="_blank" class="card-link" data-category="cerita" style="--card-theme-color: #EC4899; --card-theme-bg: #FCE7F3; --card-border-color: #FBCFE8;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">📖</div>
+                            <span class="badge-cat">Mikro-Fiksi</span>
+                        </div>
+                        <h2 class="card-heading">Koleksi Flash Fictions</h2>
+                        <p class="card-desc">
+                            Kisah-kisah kilat padat rasa yang menangkap fragmen momen emosional, keajaiban kecil, dan renungan dalam beberapa ratus kata.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Flash Fiction</span><span class="mini-tag">Cerita Kilat</span><span class="mini-tag">Mikro-Narasi</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">radinx.com/flash</span>
+                        <span class="card-btn-action">Buka Flash Stories ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Delapan Pulau yang Tak Pernah Diam ⛩️ -->
+            <a href="https://github.com/lukmanzaman/buku2AI/blob/main/Delapan-Pulau-yang-Tak-Pernah-Diam.pdf" target="_blank" class="card-link" data-category="cerita esai" style="--card-theme-color: #E11D48; --card-theme-bg: #FFF1F2; --card-border-color: #FECDD3;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">⛩️</div>
+                            <span class="badge-cat">Full Novel • Sejarah Jepang (Purba–Kini)</span>
+                        </div>
+                        <h2 class="card-heading">Delapan Pulau yang Tak Pernah Diam ⛩️</h2>
+                        <p class="card-desc">
+                            Novel epik 408 halaman melintasi 15.000 tahun peradaban Jepang (Oyashima)—dari zaman es Jomon, samurai, Sengoku, sakoku Edo, hingga Tokyo modern, dituturkan oleh Ine & Yata.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Novel 408 Hlm</span><span class="mini-tag">Sejarah Jepang Purba–Kini</span><span class="mini-tag">Jomon hingga Tokyo</span><span class="mini-tag">Ine & Yata</span><span class="mini-tag">PDF Lengkap</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">github.com/lukmanzaman/buku2AI</span>
+                        <span class="card-btn-action">Baca Novel PDF ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Langit Berganti Nama, Sungai Tidak 🐉 -->
+            <a href="https://github.com/lukmanzaman/buku2AI/blob/main/Langit-Berganti-Nama-Sungai-Tidak.pdf" target="_blank" class="card-link" data-category="cerita esai" style="--card-theme-color: #D97706; --card-theme-bg: #FEF3C7; --card-border-color: #FDE68A;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">🐉</div>
+                            <span class="badge-cat">Full Novel • Sejarah Tiongkok (Purba–Kini)</span>
+                        </div>
+                        <h2 class="card-heading">Langit Berganti Nama, Sungai Tidak 🐉</h2>
+                        <p class="card-desc">
+                            Novel sastrawi 446 halaman tentang jatuh-bangunnya dinasti dan peradaban Tiongkok dari zaman purba hingga masa kini, dituturkan bergantian oleh seekor burung pipit dan babi saksi sejarah.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Novel 446 Hlm</span><span class="mini-tag">Sejarah Tiongkok Purba–Kini</span><span class="mini-tag">Dinasti & Filsafat</span><span class="mini-tag">Burung Pipit & Babi</span><span class="mini-tag">PDF Lengkap</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">github.com/lukmanzaman/buku2AI</span>
+                        <span class="card-btn-action">Baca Novel PDF ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Lumpur Mengingat Lebih Lama daripada Batu 🏺 -->
+            <a href="https://github.com/lukmanzaman/buku2AI/blob/main/Lumpur-Mengingat-Lebih-Lama-Daripada-Batu.pdf" target="_blank" class="card-link" data-category="cerita esai" style="--card-theme-color: #059669; --card-theme-bg: #ECFDF5; --card-border-color: #A7F3D0;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">🏺</div>
+                            <span class="badge-cat">Full Novel • Sejarah Mesir Kuno</span>
+                        </div>
+                        <h2 class="card-heading">Lumpur Mengingat Lebih Lama daripada Batu 🏺</h2>
+                        <p class="card-desc">
+                            Novel 422 halaman menyelami keagungan dan misteri peradaban Mesir Kuno di lembah Sungai Nil, dituturkan oleh dua saksi tak diundang (Seneb & Ipi) yang merekam apa yang terlupakan oleh batu monumen.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Novel 422 Hlm</span><span class="mini-tag">Peradaban Mesir Kuno</span><span class="mini-tag">Lembah Sungai Nil</span><span class="mini-tag">Seneb & Ipi</span><span class="mini-tag">PDF Lengkap</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">github.com/lukmanzaman/buku2AI</span>
+                        <span class="card-btn-action">Baca Novel PDF ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Unsur-Unsur Kimia Visual -->
+            <a href="https://radinx.com/unsur/" target="_blank" class="card-link" data-category="poster esai" style="--card-theme-color: #059669; --card-theme-bg: #D1FAE5; --card-border-color: #A7F3D0;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">⚛️</div>
+                            <span class="badge-cat">Sains & Materi</span>
+                        </div>
+                        <h2 class="card-heading">Unsur-Unsur Kimia Visual</h2>
+                        <p class="card-desc">
+                            Visualisasi ensiklopedis tabel periodik unsur alam semesta, karakteristik kimiawi, fakta menarik, dan peranannya dalam peradaban.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Tabel Periodik</span><span class="mini-tag">Fisika & Kimia</span><span class="mini-tag">Sains Interaktif</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">radinx.com/unsur</span>
+                        <span class="card-btn-action">Jelajahi Unsur ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Desain Web bagi Noncoder (DKV) -->
+            <a href="https://github.com/lukmanzaman/web-desain-dkv" target="_blank" class="card-link" data-category="esai" style="--card-theme-color: #0891B2; --card-theme-bg: #CFFAFE; --card-border-color: #A5F3FC;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">🎓</div>
+                            <span class="badge-cat">Slide & Kurikulum</span>
+                        </div>
+                        <h2 class="card-heading">Desain Web bagi Noncoder (DKV)</h2>
+                        <p class="card-desc">
+                            Slide presentasi kuliah (PPT) dan materi pedagogis terbuka untuk mengajarkan arsitektur web modern bagi desainer dan kreator non-teknis.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Slide Kuliah PPT</span><span class="mini-tag">DKV Web Design</span><span class="mini-tag">Open Courseware</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">github.com/lukmanzaman/web-desain-dkv</span>
+                        <span class="card-btn-action">Lihat Slide ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Seni Generatif & Estetika Komputasi 🎨💻 -->
+            <a href="https://github.com/lukmanzaman/buku2AI/blob/main/SENI%20GENERATIF%20dan%20ESTETIKA%20KOMPUTASI.pdf" target="_blank" class="card-link" data-category="esai poster" style="--card-theme-color: #6366F1; --card-theme-bg: #EEF2FF; --card-border-color: #C7D2FE;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">🎨</div>
+                            <span class="badge-cat">Buku Teks S1 • DKV & Creative Tech</span>
+                        </div>
+                        <h2 class="card-heading">Seni Generatif & Estetika Komputasi 🎨💻</h2>
+                        <p class="card-desc">
+                            Buku teks utama 352 halaman (41 bab) panduan algoritma komputasional, p5.js, estetika visual, noise, fraktal, WebGL 3D, dan creative coding untuk S1 Desain Komunikasi Visual.
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Buku Teks 352 Hlm</span><span class="mini-tag">41 Bab Kurikulum DKV</span><span class="mini-tag">p5.js & Creative Tech</span><span class="mini-tag">Institut STTS</span><span class="mini-tag">PDF Lengkap</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">github.com/lukmanzaman/buku2AI</span>
+                        <span class="card-btn-action">Baca Buku Teks PDF ➔</span>
+                    </div>
+                </article>
+            </a>
+
+            <!-- Falsafah Ilmu Pengetahuan 🏛️📜 -->
+            <a href="https://github.com/lukmanzaman/buku2AI/blob/main/Falsafah-Ilmu-Pengetahuan.pdf" target="_blank" class="card-link" data-category="esai" style="--card-theme-color: #1E40AF; --card-theme-bg: #EFF6FF; --card-border-color: #BFDBFE;">
+                <article class="item-card">
+                    <div class="card-top-content">
+                        <div class="card-badge-row">
+                            <div class="card-icon-circle">🏛️</div>
+                            <span class="badge-cat">Buku Teks S3 • Filsafat Riset Komputasi</span>
+                        </div>
+                        <h2 class="card-heading">Falsafah Ilmu Pengetahuan 🏛️📜</h2>
+                        <p class="card-desc">
+                            Buku teks akademik rujukan utama 530 halaman untuk program doktor (S3) Informatika & Komputer: fondasi epistemologi, opasitas AI, evolusi sains (Popper-Kuhn-Lakatos), dan metodologi Design Science Research (DSR).
+                        </p>
+                        <div class="tag-list">
+                            <span class="mini-tag">Buku Teks S3 (530 Hlm)</span><span class="mini-tag">Epistemologi Komputasi</span><span class="mini-tag">Design Science Research</span><span class="mini-tag">RPS 16 Pekan</span><span class="mini-tag">PDF Lengkap</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom-row">
+                        <span class="card-url-text">github.com/lukmanzaman/buku2AI</span>
+                        <span class="card-btn-action">Baca Buku Teks PDF ➔</span>
+                    </div>
+                </article>
+            </a>
+        </section>
+
+        <!-- GRAND FINALE: THE HUMAN-CENTRIC AI MANIFESTO (MAHAPENTING) -->
+        <section class="manifesto-master-box" id="manifestoSection">
+            <div class="manifesto-badge-pill">
+                <span>⚡ MAHA PENTING • CORE FOUNDATION</span>
+            </div>
+
+            <h2 class="manifesto-headline">The Human-Centric AI Manifesto</h2>
+
+            <p class="manifesto-main-quote">
+                "Di tengah gelombang automasi dan kecerdasan buatan, kita menolak karya yang dingin, hampa rasa, dan sekadar komodifikasi algoritma. Kita memilih merawat agensi manusia, ketajaman bernalar, dan kehangatan daya cipta orisinal sebagai fondasi utama setiap karya yang lahir di RadinX."
+            </p>
+
+            <div class="manifesto-pillars-grid">
+                <div class="manifesto-pillar-item">
+                    <div class="pillar-icon">🧠</div>
+                    <h3 class="pillar-title">Human Agency</h3>
+                    <p class="pillar-desc">
+                        Manusia adalah sang pencipta, pemikir, dan penentu arah rasa. AI hanyalah kuas dan amplifier, bukan pengganti jiwa cipta.
+                    </p>
+                </div>
+
+                <div class="manifesto-pillar-item">
+                    <div class="pillar-icon">🎨</div>
+                    <h3 class="pillar-title">Authentic Aesthetics</h3>
+                    <p class="pillar-desc">
+                        Menolak <em>AI slop</em> generik yang dangkal. Menjaga standar visual, kurasi mendalam, dan estetika yang bermartabat.
+                    </p>
+                </div>
+
+                <div class="manifesto-pillar-item">
+                    <div class="pillar-icon">💖</div>
+                    <h3 class="pillar-title">Warmth &amp; Responsibility</h3>
+                    <p class="pillar-desc">
+                        Teknologi dirancang untuk mencerdaskan, menghangatkan, dan menghubungkan manusia dengan akal sehat dan empati.
+                    </p>
+                </div>
+            </div>
+
+            <div class="manifesto-cta-row">
+                <span class="manifesto-action-text">
+                    Deklarasi filosofis dan prinsip etika resmi RadinX.
+                </span>
+                <a href="https://radinx.com/manifesto/" target="_blank" class="btn-manifesto-large">
+                    <span>Baca Manifesto Lengkap</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CUTE FOOTER -->
+    <footer class="cute-footer">
+        <div class="container">
+            <div class="footer-bunny">🐰💖</div>
+            <p class="footer-quote">
+                "Menjaga kehangatan rasa, daya cipta manusia, dan keindahan bernalar di tengah dunia yang serba otomatis."
+            </p>
+            <div class="footer-links">
+                <a href="https://sejutacerita.com/" target="_blank">Sejuta Cerita 🌙</a>
+                <span>•</span>
+                <a href="http://sejutakomik.com/" target="_blank">Humor dalam Foto 📸🎭</a>
+                <span>•</span>
+                <a href="https://radinx.com/poster/" target="_blank">Koleksi Poster & Infografis HD</a>
+                <span>•</span>
+                <a href="https://lukmanzaman.github.io/it/" target="_blank">839+ VIS Computer Science & Tech 💻⚡</a>
+                <span>•</span>
+                <a href="https://lukmanzaman.github.io/marketing" target="_blank">1000+ Materi VIS Marketing</a>
+                <span>•</span>
+                <a href="https://lukmanzaman.github.io/bisnis" target="_blank">1500+ Materi VIS Bisnis & Keuangan</a>
+                <span>•</span>
+                <a href="https://radinx.com/artikel/" target="_blank">Kumpulan Artikel & Esai</a>
+                <span>•</span>
+                <a href="https://lukmanzaman.github.io/filsafat-babi/" target="_blank">Pigura Pikiran • 100 Eksperimen Filsafat</a>
+                <span>•</span>
+                <a href="https://radinx.com/flash/" target="_blank">Koleksi Flash Fictions</a>
+                <span>•</span>
+                <a href="https://github.com/lukmanzaman/buku2AI/blob/main/Delapan-Pulau-yang-Tak-Pernah-Diam.pdf" target="_blank">Delapan Pulau yang Tak Pernah Diam ⛩️</a>
+                <span>•</span>
+                <a href="https://github.com/lukmanzaman/buku2AI/blob/main/Langit-Berganti-Nama-Sungai-Tidak.pdf" target="_blank">Langit Berganti Nama, Sungai Tidak 🐉</a>
+                <span>•</span>
+                <a href="https://github.com/lukmanzaman/buku2AI/blob/main/Lumpur-Mengingat-Lebih-Lama-Daripada-Batu.pdf" target="_blank">Lumpur Mengingat Lebih Lama daripada Batu 🏺</a>
+                <span>•</span>
+                <a href="https://radinx.com/unsur/" target="_blank">Unsur-Unsur Kimia Visual</a>
+                <span>•</span>
+                <a href="https://github.com/lukmanzaman/web-desain-dkv" target="_blank">Desain Web bagi Noncoder (DKV)</a>
+                <span>•</span>
+                <a href="https://github.com/lukmanzaman/buku2AI/blob/main/SENI%20GENERATIF%20dan%20ESTETIKA%20KOMPUTASI.pdf" target="_blank">Seni Generatif & Estetika Komputasi 🎨💻</a>
+                <span>•</span>
+                <a href="https://github.com/lukmanzaman/buku2AI/blob/main/Falsafah-Ilmu-Pengetahuan.pdf" target="_blank">Falsafah Ilmu Pengetahuan 🏛️📜</a>
+                <span>•</span>
+                <a href="https://radinx.com/manifesto/" target="_blank">The Human-Centric AI Manifesto ⚡</a>
+            </div>
+            <div class="footer-copyright">
+                © 2026 RadinX • Dibuat dengan cinta oleh <a href="https://istts.ac.id/" target="_blank">Institut STTS</a>.
+            </div>
+        </div>
+    </footer>
+
+    <!-- CLIENT SCRIPT -->
+    <script>
+        let activeFilter = 'all';
+
+        function setupControls() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    activeFilter = tab.dataset.filter;
+                    filterCards();
+                });
+            });
+        }
+
+        function filterCards() {
+            const query = (document.getElementById('projectSearch').value || '').toLowerCase().trim();
+            const cards = document.querySelectorAll('.card-link');
+
+            cards.forEach(card => {
+                const category = card.dataset.category || '';
+                const text = card.textContent.toLowerCase();
+
+                const matchCat = (activeFilter === 'all') || category.includes(activeFilter);
+                const matchSearch = !query || text.includes(query);
+
+                if (matchCat && matchSearch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openRandomCard() {
+            const cards = Array.from(document.querySelectorAll('.card-link'));
+            if (cards.length > 0) {
+                const rand = cards[Math.floor(Math.random() * cards.length)];
+                window.open(rand.href, '_blank');
+            }
+        }
+
+        function toggleTheme() {
+            const root = document.documentElement;
+            const currentTheme = root.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', newTheme);
+            document.getElementById('themeIcon').textContent = newTheme === 'light' ? '🌙' : '☀️';
+            try {
+                localStorage.setItem('radinx_theme', newTheme);
+            } catch(e) {}
+        }
+
+        (function initTheme() {
+            try {
+                const saved = localStorage.getItem('radinx_theme');
+                if (saved) {
+                    document.documentElement.setAttribute('data-theme', saved);
+                    document.getElementById('themeIcon').textContent = saved === 'light' ? '🌙' : '☀️';
+                }
+            } catch(e) {}
+        })();
+
+        document.addEventListener('DOMContentLoaded', setupControls);
+    </script>
+</body>
+</html>
